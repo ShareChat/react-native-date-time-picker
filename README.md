@@ -92,8 +92,6 @@ export default App;
 | ------------------ | ---------------- | -------------------- | --------------------------------------------------------------- |
 | mode               | 'date' or 'time' | 'date'               | Defines the type of the picker.                                 |
 | value              | Date             | new Date()           | The currently selected date.                                    |
-| maximumDate        | Date             | new Date()           | Maximum date, restricts the range of possible date/time values. |
-| minimumDate        | Date             | new Date(1900, 0, 1) | Minimum date, restricts the range of possible date/time values. |
 | is24Hour           | boolean          | false                | Display TimePicker in 24 hour.                                  |
 | onClose            | function         | undefined            | Callback for when user presses cancel button.                   |
 | onConfirm          | function         |                      | Date callback when user presses confirm button.                 |

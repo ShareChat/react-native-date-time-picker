@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { FlatList, Platform, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { FlatList, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 
 import Button from './Button';
 import { getData, numberOfDaysIn } from './helpers';
@@ -13,18 +13,6 @@ type Props = {
      * The currently selected date.
      */
     value?: Date;
-    /**
-     * Maximum date.
-     *
-     * Restricts the range of possible date/time values.
-     */
-    maximumDate?: Date;
-    /**
-     * Minimum date.
-     *
-     * Restricts the range of possible date/time values.
-     */
-    minimumDate?: Date;
     /**
      * Display TimePicker in 24 hour.
      */
@@ -70,8 +58,6 @@ type Props = {
 const DateTimePicker = ({
     mode = 'date',
     value = new Date(),
-    maximumDate = new Date(),
-    minimumDate = new Date(1900, 0, 1),
     is24Hour = false,
     onClose,
     onConfirm,
@@ -87,7 +73,9 @@ const DateTimePicker = ({
      * If mode === 'date' depending upon year and month selected
      * number of days will different, hence we need to re-render list
      */
-    const [numberOfDays, setNumberOfDays] = useState<PossibleDaysInMonth>(30);
+    const [numberOfDays, setNumberOfDays] = useState<PossibleDaysInMonth>(
+        numberOfDaysIn(value.getMonth() + 1, value.getFullYear())
+    );
     // Start List
     const startListRef = useRef<null | FlatList>(null);
     const startListData = getData(mode, 0, { numberOfDays });
@@ -102,30 +90,16 @@ const DateTimePicker = ({
     );
     // End List
     const endListRef = useRef<null | FlatList>(null);
-    const endListData = getData(mode, 2, {
-        startYear: minimumDate.getFullYear(),
-        endYear: maximumDate.getFullYear(),
-    });
+    const endListData = getData(mode, 2);
     const selectedEndItem = useRef<number>(
         mode === 'date' ? value.getFullYear() : !is24Hour && value.getHours() > 11 ? 1 : 0
     );
 
     useEffect(() => {
-        preScroll(selectedStartItem.current, startListData, startListRef);
-        preScroll(selectedMiddleItem.current, middleListData, middleListRef);
         preScroll(selectedEndItem.current, endListData, endListRef);
+        preScroll(selectedMiddleItem.current, middleListData, middleListRef);
+        preScroll(selectedStartItem.current, startListData, startListRef);
     }, []);
-
-    const performScroll = (flatListRef: any, index: number) => {
-        if (Platform.OS === 'ios') {
-            // https://github.com/facebook/react-native/issues/13202
-            setTimeout(() => {
-                flatListRef.current?.scrollToIndex({ animated: false, index });
-            }, 100);
-        } else {
-            flatListRef.current?.scrollToIndex({ animated: false, index });
-        }
-    };
 
     const preScroll = (preSelected: number, data: Array<ItemType>, flatListRef: any) => {
         if (preSelected === -1) {
@@ -136,14 +110,18 @@ const DateTimePicker = ({
             });
             index = index - 1;
             index = index < 0 ? 0 : index;
-
-            performScroll(flatListRef, index);
+            setTimeout(() => {
+                flatListRef.current?.scrollToIndex({ animated: false, index });
+            }, 100);
         }
     };
 
     const handleChange = () => {
         if (mode === 'time') return;
-        const newNumberOfDays = numberOfDaysIn(selectedMiddleItem.current, selectedEndItem.current);
+        const newNumberOfDays = numberOfDaysIn(
+            selectedMiddleItem.current + 1,
+            selectedEndItem.current
+        );
 
         if (newNumberOfDays !== numberOfDays) {
             setNumberOfDays(newNumberOfDays);
@@ -151,7 +129,25 @@ const DateTimePicker = ({
     };
 
     const handleConfirm = () => {
-        onConfirm(new Date());
+        let [year, month, date, hour, minute] = [
+            value.getFullYear(),
+            value.getMonth(),
+            value.getDate(),
+            value.getHours(),
+            value.getMinutes(),
+        ];
+        if (mode === 'date') {
+            year = selectedEndItem.current;
+            month = selectedMiddleItem.current;
+            date = selectedStartItem.current;
+        } else {
+            hour =
+                is24Hour || selectedEndItem.current === 1
+                    ? selectedStartItem.current
+                    : selectedStartItem.current + 12;
+            minute = selectedMiddleItem.current;
+        }
+        onConfirm(new Date(year, month, date, hour, minute));
     };
 
     return (

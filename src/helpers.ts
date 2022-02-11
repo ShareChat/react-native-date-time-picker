@@ -123,7 +123,7 @@ function getMonthArray() {
         'November',
         'December',
     ].map((month, index) => ({
-        value: index + 1,
+        value: index,
         text: month,
         id: month,
     }));
