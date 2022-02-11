@@ -13,6 +13,5 @@
     "strict": true,
     "target": "ES2018",
   },
-  "exclude": ["**/__tests__/*"],
-  "include": ["src"]
+  "include": ["src", "__tests__"]
 }

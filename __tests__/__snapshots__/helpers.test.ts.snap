@@ -1,0 +1,2291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`helpers.ts getData() Get AmPM array for 12-hour-format 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "AM",
+    "text": "AM",
+    "value": 1,
+  },
+  Object {
+    "id": "PM",
+    "text": "PM",
+    "value": 2,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get Hour array for 12-hour-format 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#2",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#3",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#4",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#5",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#6",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#7",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#8",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#9",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#10",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#11",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#12",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get Hour array for 24-hour-format 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "00",
+    "value": 0,
+  },
+  Object {
+    "id": "#2",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#3",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#4",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#5",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#6",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#7",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#8",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#9",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#10",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#11",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#12",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#13",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#14",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#15",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#16",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#17",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#18",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#19",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#20",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#21",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#22",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#23",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#24",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get Minute array for 12-hour-format 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "00",
+    "value": 0,
+  },
+  Object {
+    "id": "#2",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#3",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#4",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#5",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#6",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#7",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#8",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#9",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#10",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#11",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#12",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#13",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#14",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#15",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#16",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#17",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#18",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#19",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#20",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#21",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#22",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#23",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#24",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#25",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#26",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#27",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#28",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#29",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#30",
+    "text": "29",
+    "value": 29,
+  },
+  Object {
+    "id": "#31",
+    "text": "30",
+    "value": 30,
+  },
+  Object {
+    "id": "#32",
+    "text": "31",
+    "value": 31,
+  },
+  Object {
+    "id": "#33",
+    "text": "32",
+    "value": 32,
+  },
+  Object {
+    "id": "#34",
+    "text": "33",
+    "value": 33,
+  },
+  Object {
+    "id": "#35",
+    "text": "34",
+    "value": 34,
+  },
+  Object {
+    "id": "#36",
+    "text": "35",
+    "value": 35,
+  },
+  Object {
+    "id": "#37",
+    "text": "36",
+    "value": 36,
+  },
+  Object {
+    "id": "#38",
+    "text": "37",
+    "value": 37,
+  },
+  Object {
+    "id": "#39",
+    "text": "38",
+    "value": 38,
+  },
+  Object {
+    "id": "#40",
+    "text": "39",
+    "value": 39,
+  },
+  Object {
+    "id": "#41",
+    "text": "40",
+    "value": 40,
+  },
+  Object {
+    "id": "#42",
+    "text": "41",
+    "value": 41,
+  },
+  Object {
+    "id": "#43",
+    "text": "42",
+    "value": 42,
+  },
+  Object {
+    "id": "#44",
+    "text": "43",
+    "value": 43,
+  },
+  Object {
+    "id": "#45",
+    "text": "44",
+    "value": 44,
+  },
+  Object {
+    "id": "#46",
+    "text": "45",
+    "value": 45,
+  },
+  Object {
+    "id": "#47",
+    "text": "46",
+    "value": 46,
+  },
+  Object {
+    "id": "#48",
+    "text": "47",
+    "value": 47,
+  },
+  Object {
+    "id": "#49",
+    "text": "48",
+    "value": 48,
+  },
+  Object {
+    "id": "#50",
+    "text": "49",
+    "value": 49,
+  },
+  Object {
+    "id": "#51",
+    "text": "50",
+    "value": 50,
+  },
+  Object {
+    "id": "#52",
+    "text": "51",
+    "value": 51,
+  },
+  Object {
+    "id": "#53",
+    "text": "52",
+    "value": 52,
+  },
+  Object {
+    "id": "#54",
+    "text": "53",
+    "value": 53,
+  },
+  Object {
+    "id": "#55",
+    "text": "54",
+    "value": 54,
+  },
+  Object {
+    "id": "#56",
+    "text": "55",
+    "value": 55,
+  },
+  Object {
+    "id": "#57",
+    "text": "56",
+    "value": 56,
+  },
+  Object {
+    "id": "#58",
+    "text": "57",
+    "value": 57,
+  },
+  Object {
+    "id": "#59",
+    "text": "58",
+    "value": 58,
+  },
+  Object {
+    "id": "#60",
+    "text": "59",
+    "value": 59,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get Minute array for 24-hour-format 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "00",
+    "value": 0,
+  },
+  Object {
+    "id": "#2",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#3",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#4",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#5",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#6",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#7",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#8",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#9",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#10",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#11",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#12",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#13",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#14",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#15",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#16",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#17",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#18",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#19",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#20",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#21",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#22",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#23",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#24",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#25",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#26",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#27",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#28",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#29",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#30",
+    "text": "29",
+    "value": 29,
+  },
+  Object {
+    "id": "#31",
+    "text": "30",
+    "value": 30,
+  },
+  Object {
+    "id": "#32",
+    "text": "31",
+    "value": 31,
+  },
+  Object {
+    "id": "#33",
+    "text": "32",
+    "value": 32,
+  },
+  Object {
+    "id": "#34",
+    "text": "33",
+    "value": 33,
+  },
+  Object {
+    "id": "#35",
+    "text": "34",
+    "value": 34,
+  },
+  Object {
+    "id": "#36",
+    "text": "35",
+    "value": 35,
+  },
+  Object {
+    "id": "#37",
+    "text": "36",
+    "value": 36,
+  },
+  Object {
+    "id": "#38",
+    "text": "37",
+    "value": 37,
+  },
+  Object {
+    "id": "#39",
+    "text": "38",
+    "value": 38,
+  },
+  Object {
+    "id": "#40",
+    "text": "39",
+    "value": 39,
+  },
+  Object {
+    "id": "#41",
+    "text": "40",
+    "value": 40,
+  },
+  Object {
+    "id": "#42",
+    "text": "41",
+    "value": 41,
+  },
+  Object {
+    "id": "#43",
+    "text": "42",
+    "value": 42,
+  },
+  Object {
+    "id": "#44",
+    "text": "43",
+    "value": 43,
+  },
+  Object {
+    "id": "#45",
+    "text": "44",
+    "value": 44,
+  },
+  Object {
+    "id": "#46",
+    "text": "45",
+    "value": 45,
+  },
+  Object {
+    "id": "#47",
+    "text": "46",
+    "value": 46,
+  },
+  Object {
+    "id": "#48",
+    "text": "47",
+    "value": 47,
+  },
+  Object {
+    "id": "#49",
+    "text": "48",
+    "value": 48,
+  },
+  Object {
+    "id": "#50",
+    "text": "49",
+    "value": 49,
+  },
+  Object {
+    "id": "#51",
+    "text": "50",
+    "value": 50,
+  },
+  Object {
+    "id": "#52",
+    "text": "51",
+    "value": 51,
+  },
+  Object {
+    "id": "#53",
+    "text": "52",
+    "value": 52,
+  },
+  Object {
+    "id": "#54",
+    "text": "53",
+    "value": 53,
+  },
+  Object {
+    "id": "#55",
+    "text": "54",
+    "value": 54,
+  },
+  Object {
+    "id": "#56",
+    "text": "55",
+    "value": 55,
+  },
+  Object {
+    "id": "#57",
+    "text": "56",
+    "value": 56,
+  },
+  Object {
+    "id": "#58",
+    "text": "57",
+    "value": 57,
+  },
+  Object {
+    "id": "#59",
+    "text": "58",
+    "value": 58,
+  },
+  Object {
+    "id": "#60",
+    "text": "59",
+    "value": 59,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get Year array between a range 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#2000",
+    "text": "2000",
+    "value": 2000,
+  },
+  Object {
+    "id": "#2001",
+    "text": "2001",
+    "value": 2001,
+  },
+  Object {
+    "id": "#2002",
+    "text": "2002",
+    "value": 2002,
+  },
+  Object {
+    "id": "#2003",
+    "text": "2003",
+    "value": 2003,
+  },
+  Object {
+    "id": "#2004",
+    "text": "2004",
+    "value": 2004,
+  },
+  Object {
+    "id": "#2005",
+    "text": "2005",
+    "value": 2005,
+  },
+  Object {
+    "id": "#2006",
+    "text": "2006",
+    "value": 2006,
+  },
+  Object {
+    "id": "#2007",
+    "text": "2007",
+    "value": 2007,
+  },
+  Object {
+    "id": "#2008",
+    "text": "2008",
+    "value": 2008,
+  },
+  Object {
+    "id": "#2009",
+    "text": "2009",
+    "value": 2009,
+  },
+  Object {
+    "id": "#2010",
+    "text": "2010",
+    "value": 2010,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get correct Date array for 28 Days 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#2",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#3",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#4",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#5",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#6",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#7",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#8",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#9",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#10",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#11",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#12",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#13",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#14",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#15",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#16",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#17",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#18",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#19",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#20",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#21",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#22",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#23",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#24",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#25",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#26",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#27",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#28",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get correct Date array for 29 Days 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#2",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#3",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#4",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#5",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#6",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#7",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#8",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#9",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#10",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#11",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#12",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#13",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#14",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#15",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#16",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#17",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#18",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#19",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#20",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#21",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#22",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#23",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#24",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#25",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#26",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#27",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#28",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#29",
+    "text": "29",
+    "value": 29,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get correct Date array for 30 Days 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#2",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#3",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#4",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#5",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#6",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#7",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#8",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#9",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#10",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#11",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#12",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#13",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#14",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#15",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#16",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#17",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#18",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#19",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#20",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#21",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#22",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#23",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#24",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#25",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#26",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#27",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#28",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#29",
+    "text": "29",
+    "value": 29,
+  },
+  Object {
+    "id": "#30",
+    "text": "30",
+    "value": 30,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get correct Date array for 31 Days 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1",
+    "text": "01",
+    "value": 1,
+  },
+  Object {
+    "id": "#2",
+    "text": "02",
+    "value": 2,
+  },
+  Object {
+    "id": "#3",
+    "text": "03",
+    "value": 3,
+  },
+  Object {
+    "id": "#4",
+    "text": "04",
+    "value": 4,
+  },
+  Object {
+    "id": "#5",
+    "text": "05",
+    "value": 5,
+  },
+  Object {
+    "id": "#6",
+    "text": "06",
+    "value": 6,
+  },
+  Object {
+    "id": "#7",
+    "text": "07",
+    "value": 7,
+  },
+  Object {
+    "id": "#8",
+    "text": "08",
+    "value": 8,
+  },
+  Object {
+    "id": "#9",
+    "text": "09",
+    "value": 9,
+  },
+  Object {
+    "id": "#10",
+    "text": "10",
+    "value": 10,
+  },
+  Object {
+    "id": "#11",
+    "text": "11",
+    "value": 11,
+  },
+  Object {
+    "id": "#12",
+    "text": "12",
+    "value": 12,
+  },
+  Object {
+    "id": "#13",
+    "text": "13",
+    "value": 13,
+  },
+  Object {
+    "id": "#14",
+    "text": "14",
+    "value": 14,
+  },
+  Object {
+    "id": "#15",
+    "text": "15",
+    "value": 15,
+  },
+  Object {
+    "id": "#16",
+    "text": "16",
+    "value": 16,
+  },
+  Object {
+    "id": "#17",
+    "text": "17",
+    "value": 17,
+  },
+  Object {
+    "id": "#18",
+    "text": "18",
+    "value": 18,
+  },
+  Object {
+    "id": "#19",
+    "text": "19",
+    "value": 19,
+  },
+  Object {
+    "id": "#20",
+    "text": "20",
+    "value": 20,
+  },
+  Object {
+    "id": "#21",
+    "text": "21",
+    "value": 21,
+  },
+  Object {
+    "id": "#22",
+    "text": "22",
+    "value": 22,
+  },
+  Object {
+    "id": "#23",
+    "text": "23",
+    "value": 23,
+  },
+  Object {
+    "id": "#24",
+    "text": "24",
+    "value": 24,
+  },
+  Object {
+    "id": "#25",
+    "text": "25",
+    "value": 25,
+  },
+  Object {
+    "id": "#26",
+    "text": "26",
+    "value": 26,
+  },
+  Object {
+    "id": "#27",
+    "text": "27",
+    "value": 27,
+  },
+  Object {
+    "id": "#28",
+    "text": "28",
+    "value": 28,
+  },
+  Object {
+    "id": "#29",
+    "text": "29",
+    "value": 29,
+  },
+  Object {
+    "id": "#30",
+    "text": "30",
+    "value": 30,
+  },
+  Object {
+    "id": "#31",
+    "text": "31",
+    "value": 31,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get correct Month array 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "January",
+    "text": "January",
+    "value": 0,
+  },
+  Object {
+    "id": "February",
+    "text": "February",
+    "value": 1,
+  },
+  Object {
+    "id": "March",
+    "text": "March",
+    "value": 2,
+  },
+  Object {
+    "id": "April",
+    "text": "April",
+    "value": 3,
+  },
+  Object {
+    "id": "May",
+    "text": "May",
+    "value": 4,
+  },
+  Object {
+    "id": "June",
+    "text": "June",
+    "value": 5,
+  },
+  Object {
+    "id": "July",
+    "text": "July",
+    "value": 6,
+  },
+  Object {
+    "id": "August",
+    "text": "August",
+    "value": 7,
+  },
+  Object {
+    "id": "September",
+    "text": "September",
+    "value": 8,
+  },
+  Object {
+    "id": "October",
+    "text": "October",
+    "value": 9,
+  },
+  Object {
+    "id": "November",
+    "text": "November",
+    "value": 10,
+  },
+  Object {
+    "id": "December",
+    "text": "December",
+    "value": 11,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
+
+exports[`helpers.ts getData() Get default Year array 1`] = `
+Array [
+  Object {
+    "id": "#-1",
+    "text": "",
+    "value": -1,
+  },
+  Object {
+    "id": "#1900",
+    "text": "1900",
+    "value": 1900,
+  },
+  Object {
+    "id": "#1901",
+    "text": "1901",
+    "value": 1901,
+  },
+  Object {
+    "id": "#1902",
+    "text": "1902",
+    "value": 1902,
+  },
+  Object {
+    "id": "#1903",
+    "text": "1903",
+    "value": 1903,
+  },
+  Object {
+    "id": "#1904",
+    "text": "1904",
+    "value": 1904,
+  },
+  Object {
+    "id": "#1905",
+    "text": "1905",
+    "value": 1905,
+  },
+  Object {
+    "id": "#1906",
+    "text": "1906",
+    "value": 1906,
+  },
+  Object {
+    "id": "#1907",
+    "text": "1907",
+    "value": 1907,
+  },
+  Object {
+    "id": "#1908",
+    "text": "1908",
+    "value": 1908,
+  },
+  Object {
+    "id": "#1909",
+    "text": "1909",
+    "value": 1909,
+  },
+  Object {
+    "id": "#1910",
+    "text": "1910",
+    "value": 1910,
+  },
+  Object {
+    "id": "#1911",
+    "text": "1911",
+    "value": 1911,
+  },
+  Object {
+    "id": "#1912",
+    "text": "1912",
+    "value": 1912,
+  },
+  Object {
+    "id": "#1913",
+    "text": "1913",
+    "value": 1913,
+  },
+  Object {
+    "id": "#1914",
+    "text": "1914",
+    "value": 1914,
+  },
+  Object {
+    "id": "#1915",
+    "text": "1915",
+    "value": 1915,
+  },
+  Object {
+    "id": "#1916",
+    "text": "1916",
+    "value": 1916,
+  },
+  Object {
+    "id": "#1917",
+    "text": "1917",
+    "value": 1917,
+  },
+  Object {
+    "id": "#1918",
+    "text": "1918",
+    "value": 1918,
+  },
+  Object {
+    "id": "#1919",
+    "text": "1919",
+    "value": 1919,
+  },
+  Object {
+    "id": "#1920",
+    "text": "1920",
+    "value": 1920,
+  },
+  Object {
+    "id": "#1921",
+    "text": "1921",
+    "value": 1921,
+  },
+  Object {
+    "id": "#1922",
+    "text": "1922",
+    "value": 1922,
+  },
+  Object {
+    "id": "#1923",
+    "text": "1923",
+    "value": 1923,
+  },
+  Object {
+    "id": "#1924",
+    "text": "1924",
+    "value": 1924,
+  },
+  Object {
+    "id": "#1925",
+    "text": "1925",
+    "value": 1925,
+  },
+  Object {
+    "id": "#1926",
+    "text": "1926",
+    "value": 1926,
+  },
+  Object {
+    "id": "#1927",
+    "text": "1927",
+    "value": 1927,
+  },
+  Object {
+    "id": "#1928",
+    "text": "1928",
+    "value": 1928,
+  },
+  Object {
+    "id": "#1929",
+    "text": "1929",
+    "value": 1929,
+  },
+  Object {
+    "id": "#1930",
+    "text": "1930",
+    "value": 1930,
+  },
+  Object {
+    "id": "#1931",
+    "text": "1931",
+    "value": 1931,
+  },
+  Object {
+    "id": "#1932",
+    "text": "1932",
+    "value": 1932,
+  },
+  Object {
+    "id": "#1933",
+    "text": "1933",
+    "value": 1933,
+  },
+  Object {
+    "id": "#1934",
+    "text": "1934",
+    "value": 1934,
+  },
+  Object {
+    "id": "#1935",
+    "text": "1935",
+    "value": 1935,
+  },
+  Object {
+    "id": "#1936",
+    "text": "1936",
+    "value": 1936,
+  },
+  Object {
+    "id": "#1937",
+    "text": "1937",
+    "value": 1937,
+  },
+  Object {
+    "id": "#1938",
+    "text": "1938",
+    "value": 1938,
+  },
+  Object {
+    "id": "#1939",
+    "text": "1939",
+    "value": 1939,
+  },
+  Object {
+    "id": "#1940",
+    "text": "1940",
+    "value": 1940,
+  },
+  Object {
+    "id": "#1941",
+    "text": "1941",
+    "value": 1941,
+  },
+  Object {
+    "id": "#1942",
+    "text": "1942",
+    "value": 1942,
+  },
+  Object {
+    "id": "#1943",
+    "text": "1943",
+    "value": 1943,
+  },
+  Object {
+    "id": "#1944",
+    "text": "1944",
+    "value": 1944,
+  },
+  Object {
+    "id": "#1945",
+    "text": "1945",
+    "value": 1945,
+  },
+  Object {
+    "id": "#1946",
+    "text": "1946",
+    "value": 1946,
+  },
+  Object {
+    "id": "#1947",
+    "text": "1947",
+    "value": 1947,
+  },
+  Object {
+    "id": "#1948",
+    "text": "1948",
+    "value": 1948,
+  },
+  Object {
+    "id": "#1949",
+    "text": "1949",
+    "value": 1949,
+  },
+  Object {
+    "id": "#1950",
+    "text": "1950",
+    "value": 1950,
+  },
+  Object {
+    "id": "#1951",
+    "text": "1951",
+    "value": 1951,
+  },
+  Object {
+    "id": "#1952",
+    "text": "1952",
+    "value": 1952,
+  },
+  Object {
+    "id": "#1953",
+    "text": "1953",
+    "value": 1953,
+  },
+  Object {
+    "id": "#1954",
+    "text": "1954",
+    "value": 1954,
+  },
+  Object {
+    "id": "#1955",
+    "text": "1955",
+    "value": 1955,
+  },
+  Object {
+    "id": "#1956",
+    "text": "1956",
+    "value": 1956,
+  },
+  Object {
+    "id": "#1957",
+    "text": "1957",
+    "value": 1957,
+  },
+  Object {
+    "id": "#1958",
+    "text": "1958",
+    "value": 1958,
+  },
+  Object {
+    "id": "#1959",
+    "text": "1959",
+    "value": 1959,
+  },
+  Object {
+    "id": "#1960",
+    "text": "1960",
+    "value": 1960,
+  },
+  Object {
+    "id": "#1961",
+    "text": "1961",
+    "value": 1961,
+  },
+  Object {
+    "id": "#1962",
+    "text": "1962",
+    "value": 1962,
+  },
+  Object {
+    "id": "#1963",
+    "text": "1963",
+    "value": 1963,
+  },
+  Object {
+    "id": "#1964",
+    "text": "1964",
+    "value": 1964,
+  },
+  Object {
+    "id": "#1965",
+    "text": "1965",
+    "value": 1965,
+  },
+  Object {
+    "id": "#1966",
+    "text": "1966",
+    "value": 1966,
+  },
+  Object {
+    "id": "#1967",
+    "text": "1967",
+    "value": 1967,
+  },
+  Object {
+    "id": "#1968",
+    "text": "1968",
+    "value": 1968,
+  },
+  Object {
+    "id": "#1969",
+    "text": "1969",
+    "value": 1969,
+  },
+  Object {
+    "id": "#1970",
+    "text": "1970",
+    "value": 1970,
+  },
+  Object {
+    "id": "#1971",
+    "text": "1971",
+    "value": 1971,
+  },
+  Object {
+    "id": "#1972",
+    "text": "1972",
+    "value": 1972,
+  },
+  Object {
+    "id": "#1973",
+    "text": "1973",
+    "value": 1973,
+  },
+  Object {
+    "id": "#1974",
+    "text": "1974",
+    "value": 1974,
+  },
+  Object {
+    "id": "#1975",
+    "text": "1975",
+    "value": 1975,
+  },
+  Object {
+    "id": "#1976",
+    "text": "1976",
+    "value": 1976,
+  },
+  Object {
+    "id": "#1977",
+    "text": "1977",
+    "value": 1977,
+  },
+  Object {
+    "id": "#1978",
+    "text": "1978",
+    "value": 1978,
+  },
+  Object {
+    "id": "#1979",
+    "text": "1979",
+    "value": 1979,
+  },
+  Object {
+    "id": "#1980",
+    "text": "1980",
+    "value": 1980,
+  },
+  Object {
+    "id": "#1981",
+    "text": "1981",
+    "value": 1981,
+  },
+  Object {
+    "id": "#1982",
+    "text": "1982",
+    "value": 1982,
+  },
+  Object {
+    "id": "#1983",
+    "text": "1983",
+    "value": 1983,
+  },
+  Object {
+    "id": "#1984",
+    "text": "1984",
+    "value": 1984,
+  },
+  Object {
+    "id": "#1985",
+    "text": "1985",
+    "value": 1985,
+  },
+  Object {
+    "id": "#1986",
+    "text": "1986",
+    "value": 1986,
+  },
+  Object {
+    "id": "#1987",
+    "text": "1987",
+    "value": 1987,
+  },
+  Object {
+    "id": "#1988",
+    "text": "1988",
+    "value": 1988,
+  },
+  Object {
+    "id": "#1989",
+    "text": "1989",
+    "value": 1989,
+  },
+  Object {
+    "id": "#1990",
+    "text": "1990",
+    "value": 1990,
+  },
+  Object {
+    "id": "#1991",
+    "text": "1991",
+    "value": 1991,
+  },
+  Object {
+    "id": "#1992",
+    "text": "1992",
+    "value": 1992,
+  },
+  Object {
+    "id": "#1993",
+    "text": "1993",
+    "value": 1993,
+  },
+  Object {
+    "id": "#1994",
+    "text": "1994",
+    "value": 1994,
+  },
+  Object {
+    "id": "#1995",
+    "text": "1995",
+    "value": 1995,
+  },
+  Object {
+    "id": "#1996",
+    "text": "1996",
+    "value": 1996,
+  },
+  Object {
+    "id": "#1997",
+    "text": "1997",
+    "value": 1997,
+  },
+  Object {
+    "id": "#1998",
+    "text": "1998",
+    "value": 1998,
+  },
+  Object {
+    "id": "#1999",
+    "text": "1999",
+    "value": 1999,
+  },
+  Object {
+    "id": "#2000",
+    "text": "2000",
+    "value": 2000,
+  },
+  Object {
+    "id": "#2001",
+    "text": "2001",
+    "value": 2001,
+  },
+  Object {
+    "id": "#2002",
+    "text": "2002",
+    "value": 2002,
+  },
+  Object {
+    "id": "#2003",
+    "text": "2003",
+    "value": 2003,
+  },
+  Object {
+    "id": "#2004",
+    "text": "2004",
+    "value": 2004,
+  },
+  Object {
+    "id": "#2005",
+    "text": "2005",
+    "value": 2005,
+  },
+  Object {
+    "id": "#2006",
+    "text": "2006",
+    "value": 2006,
+  },
+  Object {
+    "id": "#2007",
+    "text": "2007",
+    "value": 2007,
+  },
+  Object {
+    "id": "#2008",
+    "text": "2008",
+    "value": 2008,
+  },
+  Object {
+    "id": "#2009",
+    "text": "2009",
+    "value": 2009,
+  },
+  Object {
+    "id": "#2010",
+    "text": "2010",
+    "value": 2010,
+  },
+  Object {
+    "id": "#2011",
+    "text": "2011",
+    "value": 2011,
+  },
+  Object {
+    "id": "#2012",
+    "text": "2012",
+    "value": 2012,
+  },
+  Object {
+    "id": "#2013",
+    "text": "2013",
+    "value": 2013,
+  },
+  Object {
+    "id": "#2014",
+    "text": "2014",
+    "value": 2014,
+  },
+  Object {
+    "id": "#2015",
+    "text": "2015",
+    "value": 2015,
+  },
+  Object {
+    "id": "#2016",
+    "text": "2016",
+    "value": 2016,
+  },
+  Object {
+    "id": "#2017",
+    "text": "2017",
+    "value": 2017,
+  },
+  Object {
+    "id": "#2018",
+    "text": "2018",
+    "value": 2018,
+  },
+  Object {
+    "id": "#2019",
+    "text": "2019",
+    "value": 2019,
+  },
+  Object {
+    "id": "#2020",
+    "text": "2020",
+    "value": 2020,
+  },
+  Object {
+    "id": "#2021",
+    "text": "2021",
+    "value": 2021,
+  },
+  Object {
+    "id": "#2022",
+    "text": "2022",
+    "value": 2022,
+  },
+  Object {
+    "id": "#-2",
+    "text": "",
+    "value": -1,
+  },
+]
+`;
