@@ -3,7 +3,7 @@ import { View, Button, Modal, StyleSheet } from 'react-native';
 import DateTimePicker from 'react-native-date-time-picker';
 
 const App = () => {
-    const [date, setDate] = useState(new Date(1950, 6, 15));
+    const [date, setDate] = useState(new Date(1950, 6, 15, 5, 30));
     const [mode, setMode] = useState<'date' | 'time'>('date');
     const [show, setShow] = useState(false);
 
@@ -40,7 +40,7 @@ const App = () => {
                         <DateTimePicker
                             value={date}
                             mode={mode}
-                            is24Hour={true}
+                            is24Hour={false}
                             onConfirm={onConfirm}
                             onClose={closeModal}
                         />

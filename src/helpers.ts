@@ -80,17 +80,18 @@ function _isLeapYear(year: number): boolean {
     return false;
 }
 
-function _generateArray(limit: number) {
+function _generateArray(limit: number, valueModifier = 0) {
     return Array.from({ length: limit }, (_, i) => ({
-        value: i + 1,
-        text: ('0' + (i + 1)).slice(-2),
+        value: i + 1 + valueModifier,
+        text: ('0' + (i + 1 + valueModifier)).slice(-2),
         id: `#${i + 1}`,
     }));
 }
 
-const getHourArray = (is24Hour: boolean) => _generateArray(is24Hour ? 24 : 12);
+const getHourArray = (is24Hour: boolean, valueModifier: number = 0) =>
+    _generateArray(is24Hour ? 24 : 12, valueModifier);
 
-const getMinuteArray = () => _generateArray(60);
+const getMinuteArray = () => _generateArray(60, -1);
 
 function getAmPmArray() {
     return ['AM', 'PM'].map((item, index) => ({
@@ -132,7 +133,7 @@ function getMonthArray() {
 const getDateArray = () => _generateArray(31);
 
 const hour12Data = _addEmptySlots(getHourArray(false));
-const hour24Data = _addEmptySlots(getHourArray(true));
+const hour24Data = _addEmptySlots(getHourArray(true, -1));
 const minuteData = _addEmptySlots(getMinuteArray());
 const amPmData = _addEmptySlots(getAmPmArray());
 

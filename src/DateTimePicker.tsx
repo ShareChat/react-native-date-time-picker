@@ -78,9 +78,17 @@ const DateTimePicker = ({
     );
     // Start List
     const startListRef = useRef<null | FlatList>(null);
-    const startListData = getData(mode, 0, { numberOfDays });
+    const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(
-        mode === 'date' ? value.getDate() : !is24Hour ? value.getHours() - 12 : value.getHours()
+        mode === 'date'
+            ? value.getDate()
+            : is24Hour
+            ? value.getHours()
+            : value.getHours() < 13
+            ? value.getHours() === 0
+                ? 12
+                : value.getHours()
+            : value.getHours() - 12
     );
     // Middle List
     const middleListRef = useRef<null | FlatList>(null);
@@ -92,7 +100,7 @@ const DateTimePicker = ({
     const endListRef = useRef<null | FlatList>(null);
     const endListData = getData(mode, 2);
     const selectedEndItem = useRef<number>(
-        mode === 'date' ? value.getFullYear() : !is24Hour && value.getHours() > 11 ? 1 : 0
+        mode === 'date' ? value.getFullYear() : value.getHours() > 11 ? 2 : 1
     );
 
     useEffect(() => {
@@ -169,7 +177,7 @@ const DateTimePicker = ({
                     listItemStyle={listItemStyle}
                     style={styles.middleListStyle}
                 />
-                {!(mode === 'time' && !is24Hour) && (
+                {(mode === 'date' || !is24Hour) && (
                     <DateList
                         ref={endListRef}
                         data={endListData}
