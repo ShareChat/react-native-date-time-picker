@@ -88,20 +88,22 @@ export default App;
 
 ## ⚙️ Props
 
-| Prop               | Type             | Default              | Description                                                     |
-| ------------------ | ---------------- | -------------------- | --------------------------------------------------------------- |
-| mode               | 'date' or 'time' | 'date'               | Defines the type of the picker.                                 |
-| value              | Date             | new Date()           | The currently selected date.                                    |
-| is24Hour           | boolean          | false                | Display TimePicker in 24 hour.                                  |
-| onClose            | function         | undefined            | Callback for when user presses cancel button.                   |
-| onConfirm          | function         |                      | Date callback when user presses confirm button.                 |
-| itemHeight         | number           | 40                   | Height of single item in list                                   |
-| containerStyle     | ViewStyle        | undefined            | Outermost View style                                            |
-| listItemStyle      | TextStyle        | undefined            | Style for individual list item text                             |
-| confirmButtonStyle | ViewStyle        | undefined            | Style for confirm CTA                                           |
-| confirmTextStyle   | TextStyle        | undefined            | Style for confirm CTA text                                      |
-| closeButtonStyle   | ViewStyle        | undefined            | Style for close CTA                                             |
-| closeTextStyle     | TextStyle        | undefined            | Style for close CTA text                                        |
+| Prop               | Type             | Default    | Description                                     |
+| ------------------ | ---------------- | ---------- | ----------------------------------------------- |
+| mode               | 'date' or 'time' | 'date'     | Defines the type of the picker.                 |
+| value              | Date             | new Date() | The currently selected date.                    |
+| is24Hour           | boolean          | false      | Display TimePicker in 24 hour.                  |
+| onClose            | function         | undefined  | Callback for when user presses cancel button.   |
+| onConfirm          | function         |            | Date callback when user presses confirm button. |
+| itemHeight         | number           | 40         | Height of single item in list                   |
+| containerStyle     | ViewStyle        | undefined  | Outermost View style                            |
+| listItemStyle      | TextStyle        | undefined  | Style for individual list item text             |
+| confirmButtonTitle | string           | 'Ok'       | Confirm Button title                            |
+| confirmButtonStyle | ViewStyle        | undefined  | Style for confirm CTA                           |
+| confirmTextStyle   | TextStyle        | undefined  | Style for confirm CTA text                      |
+| closeButtonTitle   | string           | 'Cancel'   | Close Button title                              |
+| closeButtonStyle   | ViewStyle        | undefined  | Style for close CTA                             |
+| closeTextStyle     | TextStyle        | undefined  | Style for close CTA text                        |
 
 ## 📣 Acknowledgements
 

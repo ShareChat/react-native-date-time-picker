@@ -38,6 +38,10 @@ type Props = {
      */
     listItemStyle?: TextStyle;
     /**
+     * Confirm Button title
+     */
+    confirmButtonTitle?: string;
+    /**
      * Style for confirm CTA
      */
     confirmButtonStyle?: ViewStyle;
@@ -45,6 +49,10 @@ type Props = {
      * Style for confirm CTA text
      */
     confirmTextStyle?: TextStyle;
+    /**
+     * Close Button title
+     */
+    closeButtonTitle?: string;
     /**
      * Style for close CTA
      */
@@ -64,8 +72,10 @@ const DateTimePicker = ({
     itemHeight = 40,
     containerStyle,
     listItemStyle,
+    confirmButtonTitle = 'Ok',
     confirmButtonStyle,
     confirmTextStyle,
+    closeButtonTitle = 'Cancel',
     closeButtonStyle,
     closeTextStyle,
 }: Props) => {
@@ -191,14 +201,14 @@ const DateTimePicker = ({
             <View style={[styles.row, styles.buttonContainer]}>
                 {onClose && (
                     <Button
-                        text="CANCEL"
+                        text={closeButtonTitle}
                         onPress={onClose}
                         textStyle={closeTextStyle}
                         style={StyleSheet.flatten([styles.cancelButton, closeButtonStyle])}
                     />
                 )}
                 <Button
-                    text="OK"
+                    text={confirmButtonTitle}
                     onPress={handleConfirm}
                     textStyle={confirmTextStyle}
                     style={
