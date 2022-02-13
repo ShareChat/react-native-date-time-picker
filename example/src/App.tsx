@@ -1,52 +1,28 @@
 import React, { useState } from 'react';
-import { View, Button, Modal, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import DateTimePicker from 'react-native-date-time-picker';
 
 const App = () => {
-    const [date, setDate] = useState(new Date(1950, 6, 15, 5, 30));
-    const [mode, setMode] = useState<'date' | 'time'>('date');
-    const [show, setShow] = useState(false);
-
-    const onConfirm = (selectedDate: Date) => {
-        setShow(false);
-        setDate(selectedDate);
-    };
-
-    const showMode = (currentMode: 'date' | 'time') => {
-        setShow(true);
-        setMode(currentMode);
-    };
-
-    const showDatepicker = () => {
-        showMode('date');
-    };
-
-    const showTimepicker = () => {
-        showMode('time');
-    };
-
-    const closeModal = () => {
-        setShow(false);
-    };
+    const initialDate = new Date(1950, 6, 15, 7, 30);
+    const [date, setDate] = useState(initialDate);
+    const [time, setTime] = useState(initialDate);
 
     return (
         <View style={styles.container}>
-            <Button onPress={showDatepicker} title="Show date picker!" />
+            <Text style={styles.text}>mode="date"</Text>
+            <View style={styles.card}>
+                <DateTimePicker mode="date" initialValue={initialDate} onChange={setDate} />
+            </View>
             <View style={styles.divider} />
-            <Button onPress={showTimepicker} title="Show time picker!" />
-            <Modal transparent animationType="slide" visible={show} onRequestClose={closeModal}>
-                <View style={styles.centeredView}>
-                    <View style={styles.card}>
-                        <DateTimePicker
-                            value={date}
-                            mode={mode}
-                            is24Hour={false}
-                            onConfirm={onConfirm}
-                            onClose={closeModal}
-                        />
-                    </View>
-                </View>
-            </Modal>
+            <Text style={styles.text}>mode="time"</Text>
+            <View style={styles.card}>
+                <DateTimePicker
+                    mode="time"
+                    is24Hour={false}
+                    initialValue={initialDate}
+                    onChange={setTime}
+                />
+            </View>
         </View>
     );
 };
@@ -59,17 +35,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     divider: {
-        marginBottom: 32,
+        height: 1,
+        width: '100%',
+        backgroundColor: '#e1e1e1',
+        marginVertical: 32,
     },
-    centeredView: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,.7)',
+    text: {
+        fontSize: 24,
+        color: '#fff',
+        fontWeight: 'bold',
     },
     card: {
         backgroundColor: 'white',
         padding: 24,
         margin: 16,
+        marginTop: 56,
         borderRadius: 4,
     },
 });

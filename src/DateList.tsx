@@ -1,6 +1,15 @@
 import React from 'react';
 import { forwardRef, memo, MutableRefObject, useMemo, useRef } from 'react';
-import { Animated, FlatList, Platform, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import {
+    Animated,
+    FlatList,
+    LayoutChangeEvent,
+    Platform,
+    StyleSheet,
+    TextStyle,
+    View,
+    ViewStyle,
+} from 'react-native';
 
 import type { ItemType } from './types';
 
@@ -9,15 +18,16 @@ const NUMBER_OF_ITEMS = 3;
 type Props = {
     data: Array<ItemType>;
     selectedValue: MutableRefObject<number>;
-    onChange?: ($index: number) => void;
+    onChange?: () => void;
     style?: ViewStyle;
     listItemStyle?: TextStyle;
     itemHeight: number;
+    onLayout: (event: LayoutChangeEvent) => void | undefined;
 };
 
 const List = memo(
     forwardRef<FlatList, Props>(
-        ({ data, itemHeight, selectedValue, onChange, style, listItemStyle }, ref) => {
+        ({ data, itemHeight, selectedValue, onChange, style, listItemStyle, onLayout }, ref) => {
             const scrollY = useRef(new Animated.Value(0)).current;
             const { flatListStyle, iosTextVerticalCenter, textStyle, dividerStyle } = useMemo(
                 () => ({
@@ -60,6 +70,7 @@ const List = memo(
                         showsVerticalScrollIndicator={false}
                         initialNumToRender={NUMBER_OF_ITEMS}
                         style={flatListStyle}
+                        onLayout={onLayout}
                         keyExtractor={(item) => `${item.id}`}
                         renderItem={({ item, index }) => {
                             return (
@@ -100,7 +111,7 @@ const List = memo(
                                     );
                                     const value = data[index + 1]?.value;
                                     selectedValue.current = value;
-                                    onChange?.(value);
+                                    onChange?.();
                                 },
                             }
                         )}

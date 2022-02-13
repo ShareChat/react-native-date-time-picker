@@ -1,30 +1,25 @@
-import React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useRef, useState } from 'react';
 import { FlatList, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 
-import Button from './Button';
+import DateList from './DateList';
 import { getData, numberOfDaysIn } from './helpers';
-import DateList from './List';
 import type { ItemType, Mode, PossibleDaysInMonth } from './types';
 
 type Props = {
     mode?: Mode;
     /**
-     * The currently selected date.
+     * Initial Date to scroll to
      */
-    value?: Date;
+    initialValue?: Date;
     /**
      * Display TimePicker in 24 hour.
      */
     is24Hour?: boolean;
     /**
-     * Callback for when user presses cancel button.
+     * Callback to be called every time user change date
      */
-    onClose?: () => void;
-    /**
-     * Date callback when user presses confirm button
-     */
-    onConfirm: (date: Date) => void;
+    onChange: ($date: Date) => void;
     /**
      * Height of single item in list
      */
@@ -37,136 +32,106 @@ type Props = {
      * Style for individual list item text
      */
     listItemStyle?: TextStyle;
-    /**
-     * Confirm Button title
-     */
-    confirmButtonTitle?: string;
-    /**
-     * Style for confirm CTA
-     */
-    confirmButtonStyle?: ViewStyle;
-    /**
-     * Style for confirm CTA text
-     */
-    confirmTextStyle?: TextStyle;
-    /**
-     * Close Button title
-     */
-    closeButtonTitle?: string;
-    /**
-     * Style for close CTA
-     */
-    closeButtonStyle?: ViewStyle;
-    /**
-     * Style for close CTA text
-     */
-    closeTextStyle?: TextStyle;
 };
 
 const DateTimePicker = ({
     mode = 'date',
-    value = new Date(),
+    initialValue = new Date(),
     is24Hour = false,
-    onClose,
-    onConfirm,
+    onChange,
     itemHeight = 40,
     containerStyle,
     listItemStyle,
-    confirmButtonTitle = 'Ok',
-    confirmButtonStyle,
-    confirmTextStyle,
-    closeButtonTitle = 'Cancel',
-    closeButtonStyle,
-    closeTextStyle,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
      * number of days will different, hence we need to re-render list
      */
     const [numberOfDays, setNumberOfDays] = useState<PossibleDaysInMonth>(
-        numberOfDaysIn(value.getMonth() + 1, value.getFullYear())
+        numberOfDaysIn(initialValue.getMonth() + 1, initialValue.getFullYear())
     );
     // Start List
     const startListRef = useRef<null | FlatList>(null);
     const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(
         mode === 'date'
-            ? value.getDate()
+            ? initialValue.getDate()
             : is24Hour
-            ? value.getHours()
-            : value.getHours() < 13
-            ? value.getHours() === 0
+            ? initialValue.getHours()
+            : initialValue.getHours() < 13
+            ? initialValue.getHours() === 0
                 ? 12
-                : value.getHours()
-            : value.getHours() - 12
+                : initialValue.getHours()
+            : initialValue.getHours() - 12
     );
     // Middle List
     const middleListRef = useRef<null | FlatList>(null);
     const middleListData = getData(mode, 1);
     const selectedMiddleItem = useRef<number>(
-        mode === 'date' ? value.getMonth() : value.getMinutes()
+        mode === 'date' ? initialValue.getMonth() : initialValue.getMinutes()
     );
     // End List
     const endListRef = useRef<null | FlatList>(null);
     const endListData = getData(mode, 2);
     const selectedEndItem = useRef<number>(
-        mode === 'date' ? value.getFullYear() : value.getHours() > 11 ? 2 : 1
+        mode === 'date' ? initialValue.getFullYear() : initialValue.getHours() > 11 ? 2 : 1
     );
 
-    useEffect(() => {
-        preScroll(selectedEndItem.current, endListData, endListRef);
-        preScroll(selectedMiddleItem.current, middleListData, middleListRef);
-        preScroll(selectedStartItem.current, startListData, startListRef);
-    }, []);
+    const preScroll = useCallback(
+        (preSelected: number, data: Array<ItemType>, flatListRef: any) => {
+            if (preSelected === -1) {
+                flatListRef.current?.scrollToEnd({ animated: false });
+            } else {
+                let index = data.findIndex((item) => {
+                    return item.value === preSelected;
+                });
+                index = index - 1;
+                index = index < 0 ? 0 : index;
+                setTimeout(() => {
+                    flatListRef.current?.scrollToIndex({ animated: true, index });
+                }, 100);
+            }
+        },
+        []
+    );
 
-    const preScroll = (preSelected: number, data: Array<ItemType>, flatListRef: any) => {
-        if (preSelected === -1) {
-            flatListRef.current?.scrollToEnd({ animated: false });
-        } else {
-            let index = data.findIndex((item) => {
-                return item.value === preSelected;
-            });
-            index = index - 1;
-            index = index < 0 ? 0 : index;
-            setTimeout(() => {
-                flatListRef.current?.scrollToIndex({ animated: false, index });
-            }, 100);
-        }
-    };
-
-    const handleChange = () => {
-        if (mode === 'time') return;
-        const newNumberOfDays = numberOfDaysIn(
-            selectedMiddleItem.current + 1,
-            selectedEndItem.current
-        );
-
-        if (newNumberOfDays !== numberOfDays) {
-            setNumberOfDays(newNumberOfDays);
-        }
-    };
-
-    const handleConfirm = () => {
-        let [year, month, date, hour, minute] = [
-            value.getFullYear(),
-            value.getMonth(),
-            value.getDate(),
-            value.getHours(),
-            value.getMinutes(),
-        ];
+    const calculateNewDate = useCallback(() => {
+        let year, month, day, hour, minute;
+        let newDate = new Date(initialValue.getTime());
         if (mode === 'date') {
             year = selectedEndItem.current;
             month = selectedMiddleItem.current;
-            date = selectedStartItem.current;
+            day = selectedStartItem.current;
+            newDate.setFullYear(year, month, day);
         } else {
             hour =
                 is24Hour || selectedEndItem.current === 1
                     ? selectedStartItem.current
                     : selectedStartItem.current + 12;
             minute = selectedMiddleItem.current;
+            if (hour === 24) {
+                hour = 12;
+            } else if (!is24Hour && selectedEndItem.current === 1 && hour === 12) {
+                hour = 0;
+            }
+            newDate.setHours(hour, minute);
         }
-        onConfirm(new Date(year, month, date, hour, minute));
-    };
+        return newDate;
+    }, [initialValue, is24Hour, mode]);
+
+    const handleChange = useCallback(() => {
+        if (mode === 'date') {
+            const newNumberOfDays = numberOfDaysIn(
+                selectedMiddleItem.current + 1, //month
+                selectedEndItem.current // year
+            );
+
+            if (newNumberOfDays !== numberOfDays) {
+                setNumberOfDays(newNumberOfDays);
+            }
+        }
+        onChange(calculateNewDate());
+    }, [mode, onChange, calculateNewDate, numberOfDays]);
 
     return (
         <View style={containerStyle}>
@@ -175,8 +140,12 @@ const DateTimePicker = ({
                     ref={startListRef}
                     data={startListData}
                     itemHeight={itemHeight}
+                    onChange={handleChange}
                     listItemStyle={listItemStyle}
                     selectedValue={selectedStartItem}
+                    onLayout={() =>
+                        preScroll(selectedStartItem.current, startListData, startListRef)
+                    }
                 />
                 <DateList
                     ref={middleListRef}
@@ -186,6 +155,9 @@ const DateTimePicker = ({
                     onChange={handleChange}
                     listItemStyle={listItemStyle}
                     style={styles.middleListStyle}
+                    onLayout={() =>
+                        preScroll(selectedMiddleItem.current, middleListData, middleListRef)
+                    }
                 />
                 {(mode === 'date' || !is24Hour) && (
                     <DateList
@@ -195,28 +167,9 @@ const DateTimePicker = ({
                         listItemStyle={listItemStyle}
                         selectedValue={selectedEndItem}
                         onChange={handleChange}
+                        onLayout={() => preScroll(selectedEndItem.current, endListData, endListRef)}
                     />
                 )}
-            </View>
-            <View style={[styles.row, styles.buttonContainer]}>
-                {onClose && (
-                    <Button
-                        text={closeButtonTitle}
-                        onPress={onClose}
-                        textStyle={closeTextStyle}
-                        style={StyleSheet.flatten([styles.cancelButton, closeButtonStyle])}
-                    />
-                )}
-                <Button
-                    text={confirmButtonTitle}
-                    onPress={handleConfirm}
-                    textStyle={confirmTextStyle}
-                    style={
-                        onClose
-                            ? StyleSheet.flatten([styles.confirmButton, confirmButtonStyle])
-                            : confirmButtonStyle
-                    }
-                />
             </View>
         </View>
     );

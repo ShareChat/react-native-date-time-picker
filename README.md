@@ -35,50 +35,30 @@ yarn add @sharechat/react-native-date-time-picker
 
 ```js
 import React, { useState } from 'react';
-import { View, Button, Modal } from 'react-native';
+import { View, Text } from 'react-native';
 import DateTimePicker from 'react-native-date-time-picker';
 
 const App = () => {
-    const [date, setDate] = useState(new Date(1598051730000));
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
+    const initialDate = new Date(1950, 6, 15, 7, 30);
+    const [date, setDate] = useState(initialDate);
+    const [time, setTime] = useState(initialDate);
 
-    const onConfirm = (selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(false);
-        setDate(currentDate);
-    };
+    const onDateChange = (selectedDate: Date) => setDate(selectedDate);
 
-    const showMode = (currentMode) => {
-        setShow(true);
-        setMode(currentMode);
-    };
-
-    const showDatepicker = () => {
-        showMode('date');
-    };
-
-    const showTimepicker = () => {
-        showMode('time');
-    };
-
-    const closeModal = () => {
-        setShow(false);
-    };
+    const onTimeChange = (selectedTime: Date) => setTime(selectedTime);
 
     return (
         <View>
-            <Button onPress={showDatepicker} title="Show date picker!" />
-            <Button onPress={showTimepicker} title="Show time picker!" />
-            <Modal visible={show} onRequestClose={closeModal}>
-                <DateTimePicker
-                    value={date}
-                    mode={mode}
-                    is24Hour={true}
-                    onConfirm={onConfirm}
-                    onClose={closeModal}
-                />
-            </Modal>
+            <Text style={styles.text}>mode="date"</Text>
+            <DateTimePicker mode="date" initialValue={initialDate} onChange={onDateChange} />
+
+            <Text style={styles.text}>mode="time"</Text>
+            <DateTimePicker
+                mode="time"
+                is24Hour={false}
+                initialValue={initialDate}
+                onChange={onTimeChange}
+            />
         </View>
     );
 };
@@ -86,24 +66,19 @@ const App = () => {
 export default App;
 ```
 
+> Note: `mode` change on the fly is not supported
+
 ## ⚙️ Props
 
-| Prop               | Type             | Default    | Description                                     |
-| ------------------ | ---------------- | ---------- | ----------------------------------------------- |
-| mode               | 'date' or 'time' | 'date'     | Defines the type of the picker.                 |
-| value              | Date             | new Date() | The currently selected date.                    |
-| is24Hour           | boolean          | false      | Display TimePicker in 24 hour.                  |
-| onClose            | function         | undefined  | Callback for when user presses cancel button.   |
-| onConfirm          | function         |            | Date callback when user presses confirm button. |
-| itemHeight         | number           | 40         | Height of single item in list                   |
-| containerStyle     | ViewStyle        | undefined  | Outermost View style                            |
-| listItemStyle      | TextStyle        | undefined  | Style for individual list item text             |
-| confirmButtonTitle | string           | 'Ok'       | Confirm Button title                            |
-| confirmButtonStyle | ViewStyle        | undefined  | Style for confirm CTA                           |
-| confirmTextStyle   | TextStyle        | undefined  | Style for confirm CTA text                      |
-| closeButtonTitle   | string           | 'Cancel'   | Close Button title                              |
-| closeButtonStyle   | ViewStyle        | undefined  | Style for close CTA                             |
-| closeTextStyle     | TextStyle        | undefined  | Style for close CTA text                        |
+| Prop           | Type             | Default    | Description                                        |
+| -------------- | ---------------- | ---------- | -------------------------------------------------- |
+| mode           | 'date' or 'time' | 'date'     | Defines the type of the picker.                    |
+| initialValue   | Date             | new Date() | Initial Date to scroll to                          |
+| is24Hour       | boolean          | false      | Display TimePicker in 24 hour.                     |
+| onChange       | function         | undefined  | Callback to be called every time user change date. |
+| itemHeight     | number           | 40         | Height of single item in list                      |
+| containerStyle | ViewStyle        | undefined  | Outermost View style                               |
+| listItemStyle  | TextStyle        | undefined  | Style for individual list item text                |
 
 ## 📣 Acknowledgements
 
