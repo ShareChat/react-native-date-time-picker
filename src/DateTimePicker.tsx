@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useRef, useState } from 'react';
-import { FlatList, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 
 import DateList from './DateList';
 import { getData, numberOfDaysIn } from './helpers';
@@ -51,7 +51,6 @@ const DateTimePicker = ({
         numberOfDaysIn(initialValue.getMonth() + 1, initialValue.getFullYear())
     );
     // Start List
-    const startListRef = useRef<null | FlatList>(null);
     const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(
         mode === 'date'
@@ -65,35 +64,29 @@ const DateTimePicker = ({
             : initialValue.getHours() - 12
     );
     // Middle List
-    const middleListRef = useRef<null | FlatList>(null);
     const middleListData = getData(mode, 1);
     const selectedMiddleItem = useRef<number>(
         mode === 'date' ? initialValue.getMonth() : initialValue.getMinutes()
     );
     // End List
-    const endListRef = useRef<null | FlatList>(null);
     const endListData = getData(mode, 2);
     const selectedEndItem = useRef<number>(
         mode === 'date' ? initialValue.getFullYear() : initialValue.getHours() > 11 ? 2 : 1
     );
 
-    const preScroll = useCallback(
-        (preSelected: number, data: Array<ItemType>, flatListRef: any) => {
-            if (preSelected === -1) {
-                flatListRef.current?.scrollToEnd({ animated: false });
-            } else {
-                let index = data.findIndex((item) => {
-                    return item.value === preSelected;
-                });
-                index = index - 1;
-                index = index < 0 ? 0 : index;
-                setTimeout(() => {
-                    flatListRef.current?.scrollToIndex({ animated: true, index });
-                }, 100);
-            }
-        },
-        []
-    );
+    const getInitialScrollIndex = (preSelected: number, data: Array<ItemType>) => {
+        if (preSelected === -1) {
+            return data.length - 2;
+        }
+
+        let index = data.findIndex((item) => {
+            return item.value === preSelected;
+        });
+        index = index - 1;
+        index = index < 0 ? 0 : index;
+
+        return index;
+    };
 
     const calculateNewDate = useCallback(() => {
         let year, month, day, hour, minute;
@@ -137,37 +130,39 @@ const DateTimePicker = ({
         <View style={containerStyle}>
             <View style={styles.row}>
                 <DateList
-                    ref={startListRef}
                     data={startListData}
                     itemHeight={itemHeight}
                     onChange={handleChange}
                     listItemStyle={listItemStyle}
                     selectedValue={selectedStartItem}
-                    onLayout={() =>
-                        preScroll(selectedStartItem.current, startListData, startListRef)
-                    }
+                    initialScrollIndex={getInitialScrollIndex(
+                        selectedStartItem.current,
+                        startListData
+                    )}
                 />
                 <DateList
-                    ref={middleListRef}
                     data={middleListData}
                     itemHeight={itemHeight}
                     selectedValue={selectedMiddleItem}
                     onChange={handleChange}
                     listItemStyle={listItemStyle}
                     style={styles.middleListStyle}
-                    onLayout={() =>
-                        preScroll(selectedMiddleItem.current, middleListData, middleListRef)
-                    }
+                    initialScrollIndex={getInitialScrollIndex(
+                        selectedMiddleItem.current,
+                        middleListData
+                    )}
                 />
                 {(mode === 'date' || !is24Hour) && (
                     <DateList
-                        ref={endListRef}
                         data={endListData}
                         itemHeight={itemHeight}
                         listItemStyle={listItemStyle}
                         selectedValue={selectedEndItem}
                         onChange={handleChange}
-                        onLayout={() => preScroll(selectedEndItem.current, endListData, endListRef)}
+                        initialScrollIndex={getInitialScrollIndex(
+                            selectedEndItem.current,
+                            endListData
+                        )}
                     />
                 )}
             </View>
