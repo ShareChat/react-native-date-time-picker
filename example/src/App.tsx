@@ -16,12 +16,6 @@ const App = () => {
             </View>
             <View style={styles.divider} />
 
-            {/* <Text style={styles.text}>mode="date"</Text>
-            <View style={styles.card}>
-                <DateTimePicker mode="date" onChange={setDate} />
-            </View>
-            <View style={styles.divider} /> */}
-
             <Text style={styles.text}>mode="time"</Text>
             <View style={styles.card}>
                 <DateTimePicker
@@ -37,24 +31,24 @@ const App = () => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 32,
+        padding: 32,
         flex: 1,
-        // backgroundColor: 'black',
+        backgroundColor: 'black',
         justifyContent: 'center',
     },
     divider: {
         height: 1,
         width: '100%',
-        // backgroundColor: '#e1e1e1',
+        backgroundColor: '#e1e1e1',
         marginVertical: 32,
     },
     text: {
         fontSize: 24,
-        // color: '#fff',
+        color: '#fff',
         fontWeight: 'bold',
     },
     card: {
-        // backgroundColor: 'white',
+        backgroundColor: 'white',
         padding: 24,
         margin: 16,
         marginTop: 56,
