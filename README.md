@@ -34,33 +34,46 @@ yarn add @sharechat/react-native-date-time-picker
 ## 📝 General Usage
 
 ```js
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import DateTimePicker from 'react-native-date-time-picker';
+import React, { useState } from "react";
+import { View, Text } from "react-native";
+import DateTimePicker from "react-native-date-time-picker";
 
 const App = () => {
-    const initialDate = new Date(1950, 6, 15, 7, 30);
-    const [date, setDate] = useState(initialDate);
-    const [time, setTime] = useState(initialDate);
+  const initialDate = new Date(1950, 6, 15, 7, 30);
+  const [date, setDate] = useState(initialDate);
+  const [time, setTime] = useState(initialDate);
+  const [datetime, setDatetime] = useState();
 
-    const onDateChange = (selectedDate: Date) => setDate(selectedDate);
+  const onDateChange = (selectedDate: Date) => setDate(selectedDate);
 
-    const onTimeChange = (selectedTime: Date) => setTime(selectedTime);
+  const onTimeChange = (selectedTime: Date) => setTime(selectedTime);
 
-    return (
-        <View>
-            <Text style={styles.text}>mode="date"</Text>
-            <DateTimePicker mode="date" initialValue={initialDate} onChange={onDateChange} />
+  const onDatetimeChange = (selectedDatetime: Date) =>
+    setDatetime(selectedDatetime);
 
-            <Text style={styles.text}>mode="time"</Text>
-            <DateTimePicker
-                mode="time"
-                is24Hour={false}
-                initialValue={initialDate}
-                onChange={onTimeChange}
-            />
-        </View>
-    );
+  return (
+    <View>
+      <Text style={styles.text}>mode="date"</Text>
+      <DateTimePicker
+        mode="date"
+        initialValue={initialDate}
+        onChange={onDateChange}
+      />
+
+      <Text style={styles.text}>mode="time"</Text>
+      <DateTimePicker
+        mode="time"
+        is24Hour={false}
+        initialValue={initialDate}
+        onChange={onTimeChange}
+      />
+
+      <Text style={styles.text}>mode="datetime"</Text>
+      <View style={styles.card}>
+        <DateTimePicker mode="datetime" onChange={onDatetimeChange} />
+      </View>
+    </View>
+  );
 };
 
 export default App;
@@ -71,10 +84,11 @@ export default App;
 ## ⚙️ Props
 
 ListItemStyleType = { color?: string; backgroundColor?: string }
+Mode = 'date' | 'time' | 'datetime'
 
 | Prop           | Type              | Default    | Description                                         |
 | -------------- | ----------------- | ---------- | --------------------------------------------------- |
-| mode           | 'date' or 'time'  | 'date'     | Defines the type of the picker.                     |
+| mode           | Mode              | 'date'     | Defines the type of the picker.                     |
 | initialValue   | Date              | new Date() | Initial Date to scroll to                           |
 | minimumDate    | Date              | undefined  | Minimum Date available to select                    |
 | maximumDate    | Date              | undefined  | Maximum Date available to select                    |
@@ -88,7 +102,7 @@ ListItemStyleType = { color?: string; backgroundColor?: string }
 
 ## 📣 Acknowledgements
 
--   [react-native-module-template](https://github.com/demchenkoalex/react-native-module-template)
+- [react-native-module-template](https://github.com/demchenkoalex/react-native-module-template)
 
 ## 🛡 License
 
