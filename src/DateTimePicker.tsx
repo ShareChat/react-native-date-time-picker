@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { useRef, useState } from 'react';
-import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
 
 import DateList from './DateList';
 import { getData, numberOfDaysIn } from './helpers';
-import type { ItemType, Mode, PossibleDaysInMonth } from './types';
+import type { ItemType, ListItemStyleType, Mode, PossibleDaysInMonth } from './types';
 
 type Props = {
     mode?: Mode;
@@ -31,7 +31,15 @@ type Props = {
     /**
      * Style for individual list item text
      */
-    listItemStyle?: TextStyle;
+    listItemStyle?: ListItemStyleType;
+    /**
+     * Color style for divider
+     */
+    separatorColor?: string;
+    /**
+     * Flat list props
+     */
+    flatListProps?: FlatListProps;
 };
 
 const DateTimePicker = ({
@@ -42,6 +50,8 @@ const DateTimePicker = ({
     itemHeight = 40,
     containerStyle,
     listItemStyle,
+    separatorColor,
+    flatListProps,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
@@ -139,6 +149,8 @@ const DateTimePicker = ({
                         selectedStartItem.current,
                         startListData
                     )}
+                    separatorColor={separatorColor}
+                    flatListProps={flatListProps}
                 />
                 <DateList
                     data={middleListData}
@@ -151,6 +163,8 @@ const DateTimePicker = ({
                         selectedMiddleItem.current,
                         middleListData
                     )}
+                    separatorColor={separatorColor}
+                    flatListProps={flatListProps}
                 />
                 {(mode === 'date' || !is24Hour) && (
                     <DateList
@@ -163,6 +177,8 @@ const DateTimePicker = ({
                             selectedEndItem.current,
                             endListData
                         )}
+                        separatorColor={separatorColor}
+                        flatListProps={flatListProps}
                     />
                 )}
             </View>

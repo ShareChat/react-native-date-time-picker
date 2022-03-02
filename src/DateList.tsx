@@ -1,8 +1,8 @@
 import React from 'react';
 import { memo, MutableRefObject, useMemo, useRef } from 'react';
-import { Animated, Platform, StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { Animated, FlatListProps, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
-import type { ItemType } from './types';
+import type { ItemType, ListItemStyleType } from './types';
 
 const NUMBER_OF_ITEMS = 3;
 
@@ -11,9 +11,11 @@ type Props = {
     selectedValue: MutableRefObject<number>;
     onChange: () => void;
     style?: ViewStyle;
-    listItemStyle?: TextStyle;
+    listItemStyle?: ListItemStyleType;
     itemHeight: number;
     initialScrollIndex: number;
+    separatorColor?: string;
+    flatListProps?: FlatListProps;
 };
 
 const List = memo(
@@ -25,6 +27,8 @@ const List = memo(
         initialScrollIndex,
         style,
         listItemStyle,
+        separatorColor,
+        flatListProps = {},
     }: Props) => {
         const scrollY = useRef(new Animated.Value(0)).current;
         const { flatListStyle, iosTextVerticalCenter, textStyle, dividerStyle } = useMemo(
@@ -32,9 +36,13 @@ const List = memo(
                 flatListStyle: { height: itemHeight * NUMBER_OF_ITEMS },
                 iosTextVerticalCenter: { lineHeight: itemHeight },
                 textStyle: { height: itemHeight },
-                dividerStyle: { height: itemHeight, marginVertical: itemHeight },
+                dividerStyle: {
+                    height: itemHeight,
+                    marginVertical: itemHeight,
+                    ...(separatorColor ? { borderColor: separatorColor } : {}),
+                },
             }),
-            [itemHeight]
+            [itemHeight, separatorColor]
         );
 
         const calculateStyle = (i: number) => {
@@ -58,6 +66,30 @@ const List = memo(
             return { opacity };
         };
 
+        const {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            data: _data,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            snapToInterval,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            decelerationRate,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            showsVerticalScrollIndicator,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            style: _style,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            initialScrollIndex: _initialScrollIndex,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            keyExtractor,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            renderItem,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            getItemLayout,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            onScroll,
+            ...rest
+        } = flatListProps;
+
         return (
             <View style={[styles.container, style]}>
                 <Animated.FlatList
@@ -65,7 +97,6 @@ const List = memo(
                     snapToInterval={itemHeight}
                     decelerationRate="fast"
                     showsVerticalScrollIndicator={false}
-                    initialNumToRender={NUMBER_OF_ITEMS}
                     style={flatListStyle}
                     initialScrollIndex={initialScrollIndex}
                     keyExtractor={(item) => `${item.id}`}
@@ -112,6 +143,7 @@ const List = memo(
                             },
                         }
                     )}
+                    {...rest}
                 />
                 <View pointerEvents="box-none" style={[styles.divider, dividerStyle]} />
             </View>
