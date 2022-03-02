@@ -76,6 +76,8 @@ ListItemStyleType = { color?: string; backgroundColor?: string }
 | -------------- | ----------------- | ---------- | --------------------------------------------------- |
 | mode           | 'date' or 'time'  | 'date'     | Defines the type of the picker.                     |
 | initialValue   | Date              | new Date() | Initial Date to scroll to                           |
+| minimumDate    | Date              | undefined  | Minimum Date available to select                    |
+| maximumDate    | Date              | undefined  | Maximum Date available to select                    |
 | is24Hour       | boolean           | false      | Display TimePicker in 24 hour.                      |
 | onChange       | function          | undefined  | Callback to be called every time user change date.  |
 | itemHeight     | number            | 40         | Height of single item in list                       |
