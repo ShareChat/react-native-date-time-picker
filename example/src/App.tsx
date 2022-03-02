@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, SafeAreaView } from 'react-native';
 import DateTimePicker from 'react-native-date-time-picker';
 
 const App = () => {
     const initialDate = new Date(1950, 6, 15, 7, 30);
+    const [datetime, setDatetime] = useState(initialDate);
     const [date, setDate] = useState(initialDate);
     const [time, setTime] = useState(initialDate);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>mode="date"</Text>
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.text}>mode="datetime"</Text>
             <View style={styles.card}>
-                <DateTimePicker mode="date" initialValue={initialDate} onChange={setDate} />
+                <DateTimePicker mode="datetime" onChange={setDatetime} />
             </View>
             <View style={styles.divider} />
+
+            {/* <Text style={styles.text}>mode="date"</Text>
+            <View style={styles.card}>
+                <DateTimePicker mode="date" onChange={setDate} />
+            </View>
+            <View style={styles.divider} /> */}
+
             <Text style={styles.text}>mode="time"</Text>
             <View style={styles.card}>
                 <DateTimePicker
@@ -23,30 +31,30 @@ const App = () => {
                     onChange={setTime}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        padding: 32,
+        margin: 32,
         flex: 1,
-        backgroundColor: 'black',
+        // backgroundColor: 'black',
         justifyContent: 'center',
     },
     divider: {
         height: 1,
         width: '100%',
-        backgroundColor: '#e1e1e1',
+        // backgroundColor: '#e1e1e1',
         marginVertical: 32,
     },
     text: {
         fontSize: 24,
-        color: '#fff',
+        // color: '#fff',
         fontWeight: 'bold',
     },
     card: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         padding: 24,
         margin: 16,
         marginTop: 56,
