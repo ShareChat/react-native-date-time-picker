@@ -9,6 +9,7 @@ React Native date & time picker component for iOS, Android written without using
   <tr>
     <td><p align="center"><img src="./.github/images/ios_date.png" height="420"/></p></td>
     <td><p align="center"><img src="./.github/images/ios_time.png" height="420"/></p></td>
+    <td><p align="center"><img src="./.github/images/ios_datetime.png" height="420"/></p></td>
   </tr>
   <tr><td colspan=2><strong>Android</strong></td></tr>
   <tr>
