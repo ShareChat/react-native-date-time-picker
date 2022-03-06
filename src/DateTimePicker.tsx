@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { useCallback } from 'react';
 import { useRef, useState } from 'react';
 import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
@@ -40,6 +41,14 @@ type Props = {
      * Flat list props
      */
     flatListProps?: FlatListProps;
+    /**
+     * Maximum Date
+     */
+    maximumDate?: Date;
+    /**
+     * Minimum Date
+     */
+    minimumDate?: Date;
 };
 
 const DateTimePicker = ({
@@ -52,6 +61,8 @@ const DateTimePicker = ({
     listItemStyle,
     separatorColor,
     flatListProps,
+    maximumDate,
+    minimumDate,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
@@ -60,6 +71,14 @@ const DateTimePicker = ({
     const [numberOfDays, setNumberOfDays] = useState<PossibleDaysInMonth>(
         numberOfDaysIn(initialValue.getMonth() + 1, initialValue.getFullYear())
     );
+    // clubbed Date List
+    const clubbedDateListData = getData(mode, -1, {
+        numberOfDays,
+        is24Hour,
+        maximumDate,
+        minimumDate,
+    });
+    const clubbedDateItem = useRef<number>(initialValue);
     // Start List
     const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(
@@ -84,12 +103,21 @@ const DateTimePicker = ({
         mode === 'date' ? initialValue.getFullYear() : initialValue.getHours() > 11 ? 2 : 1
     );
 
-    const getInitialScrollIndex = (preSelected: number, data: Array<ItemType>) => {
+    const getInitialScrollIndex = (
+        preSelected: number | Date,
+        data: Array<ItemType>,
+        isDate?: boolean
+    ) => {
         if (preSelected === -1) {
             return data.length - 2;
         }
 
         let index = data.findIndex((item) => {
+            if (isDate)
+                return (
+                    dayjs(item.value).format('DD/MM/YYYY') ===
+                    dayjs(preSelected).format('DD/MM/YYYY')
+                );
             return item.value === preSelected;
         });
         index = index - 1;
@@ -139,6 +167,23 @@ const DateTimePicker = ({
     return (
         <View style={containerStyle}>
             <View style={styles.row}>
+                {mode === 'datetime' && (
+                    <DateList
+                        data={clubbedDateListData}
+                        itemHeight={itemHeight}
+                        onChange={handleChange}
+                        selectedValue={clubbedDateItem}
+                        listItemStyle={[listItemStyle, styles.clubbedDateListItemStyle]}
+                        initialScrollIndex={getInitialScrollIndex(
+                            clubbedDateItem.current,
+                            clubbedDateListData,
+                            true
+                        )}
+                        style={styles.clubbedDateListStyle}
+                        separatorColor={separatorColor}
+                        flatListProps={flatListProps}
+                    />
+                )}
                 <DateList
                     data={startListData}
                     itemHeight={itemHeight}
@@ -204,6 +249,13 @@ const styles = StyleSheet.create({
     },
     confirmButton: {
         marginStart: 8,
+    },
+    clubbedDateListStyle: {
+        marginRight: 24,
+        flex: 4,
+    },
+    clubbedDateListItemStyle: {
+        textAlign: 'left',
     },
 });
 

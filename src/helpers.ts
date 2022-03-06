@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import type { ItemType, Mode, PossibleDaysInMonth } from './types';
 
 type Config = {
@@ -5,6 +7,8 @@ type Config = {
     is24Hour?: boolean;
     startYear?: number;
     endYear?: number;
+    maximumDate?: Date;
+    minimumDate?: Date;
 };
 
 export function numberOfDaysIn(month: number, year: number): PossibleDaysInMonth {
@@ -22,11 +26,33 @@ export function numberOfDaysIn(month: number, year: number): PossibleDaysInMonth
     return days;
 }
 
-export function getData(mode: Mode, index: 0 | 1 | 2, config: Config = {}): Array<ItemType> {
+export function getData(mode: Mode, index: -1 | 0 | 1 | 2, config: Config = {}): Array<ItemType> {
+    if (index === -1) {
+        return _getDatetimeData(config);
+    }
     if (mode === 'date') {
         return _getDateData(index, config);
     }
     return _getTimeData(index, config.is24Hour ?? false);
+}
+
+function _getDatetimeData({
+    minimumDate = dayjs().subtract(10, 'day').toDate(),
+    maximumDate = dayjs().add(10, 'day').toDate(),
+}: Config): Array<ItemType> {
+    const diff = dayjs(maximumDate).diff(minimumDate, 'days');
+
+    // only MM-DD-YYYY is allowed for parsing date in dayjs
+    // https://day.js.org/docs/en/plugin/custom-parse-format
+    let startDate = dayjs(dayjs(minimumDate).format('MM-DD-YYYY'), 'MM-DD-YYYY');
+
+    const arr = Array.from({ length: diff }, (_, i) => ({
+        value: startDate.add(i, 'day').toDate(),
+        text: startDate.add(i, 'day').format('ddd, D MMM'),
+        id: `#${i + 1}`,
+    }));
+
+    return _addEmptySlots(arr);
 }
 
 function _getDateData(
