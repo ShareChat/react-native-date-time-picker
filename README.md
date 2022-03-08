@@ -83,19 +83,19 @@ export default App;
 ListItemStyleType = { color?: string; backgroundColor?: string }
 Mode = 'date' | 'time' | 'datetime'
 
-| Prop           | Type              | Required | Default    | Description                                         |
-| -------------- | ----------------- | -------- | ---------- | --------------------------------------------------- |
-| mode           | Mode              | -        | 'date'     | Defines the type of the picker.                     |
-| initialValue   | Date              | -        | new Date() | Initial Date to scroll to                           |
-| minimumDate    | Date              | -        | undefined  | Minimum Date available to select                    |
-| maximumDate    | Date              | -        | undefined  | Maximum Date available to select                    |
-| is24Hour       | boolean           | -        | false      | Display TimePicker in 24 hour.                      |
-| onChange       | function          | ✅       | -          | Callback to be called every time user change date.  |
-| itemHeight     | number            | -        | 40         | Height of single item in list                       |
-| containerStyle | ViewStyle         | -        | undefined  | Outermost View style                                |
-| listItemStyle  | ListItemStyleType | -        | undefined  | Style for individual list item text                 |
-| separatorColor | string            | -        | undefined  | Color for the separator between 2 item              |
-| flatListProps  | FlatListProps     | -        | undefined  | To optimise FlatList add optimizations to this prop |
+| Prop           | Type              | Required | Default    | Description                                                |
+| -------------- | ----------------- | -------- | ---------- | ---------------------------------------------------------- |
+| mode           | Mode              | -        | 'date'     | Defines the type of the picker.                            |
+| initialValue   | Date              | -        | new Date() | Initial Date to scroll to                                  |
+| minimumDate    | Date              | -        | undefined  | Minimum Date available to select(only for "datetime" mode) |
+| maximumDate    | Date              | -        | undefined  | Maximum Date available to select(only for "datetime" mode) |
+| is24Hour       | boolean           | -        | false      | Display TimePicker in 24 hour.                             |
+| onChange       | function          | ✅       | -          | Callback to be called every time user change date.         |
+| itemHeight     | number            | -        | 40         | Height of single item in list                              |
+| containerStyle | ViewStyle         | -        | undefined  | Outermost View style                                       |
+| listItemStyle  | ListItemStyleType | -        | undefined  | Style for individual list item text                        |
+| separatorColor | string            | -        | undefined  | Color for the separator between 2 item                     |
+| flatListProps  | FlatListProps     | -        | undefined  | To optimise FlatList add optimizations to this prop        |
 
 ## 📣 Acknowledgements
 
