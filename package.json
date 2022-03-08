@@ -21,6 +21,9 @@
         "check-types": "tsc",
         "validate": "npm-run-all --parallel check-types check-format lint test"
     },
+    "dependencies": {
+        "dayjs": "^1.10.8"
+    },
     "devDependencies": {
         "@babel/core": "^7.16.12",
         "@babel/runtime": "^7.16.7",
