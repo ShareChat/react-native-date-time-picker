@@ -40,7 +40,7 @@ type Props = {
     /**
      * Flat list props
      */
-    flatListProps?: FlatListProps;
+    flatListProps?: Partial<FlatListProps<ItemType>>;
     /**
      * Maximum Date
      */
@@ -78,7 +78,7 @@ const DateTimePicker = ({
         maximumDate,
         minimumDate,
     });
-    const clubbedDateItem = useRef<number>(initialValue);
+    const clubbedDateItem = useRef<number | Date>(initialValue);
     // Start List
     const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(

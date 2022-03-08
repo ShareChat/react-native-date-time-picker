@@ -1,21 +1,31 @@
 import React from 'react';
 import { memo, MutableRefObject, useMemo, useRef } from 'react';
-import { Animated, FlatListProps, Platform, StyleSheet, View, ViewStyle } from 'react-native';
+import {
+    Animated,
+    FlatListProps,
+    Platform,
+    StyleSheet,
+    TextStyle,
+    View,
+    ViewStyle,
+} from 'react-native';
 
 import type { ItemType, ListItemStyleType } from './types';
 
 const NUMBER_OF_ITEMS = 3;
 
+type CustomListItemStyleType = (ListItemStyleType & TextStyle) | undefined;
+
 type Props = {
     data: Array<ItemType>;
-    selectedValue: MutableRefObject<number>;
+    selectedValue: MutableRefObject<number | Date>;
     onChange: () => void;
     style?: ViewStyle;
-    listItemStyle?: ListItemStyleType;
+    listItemStyle?: CustomListItemStyleType | CustomListItemStyleType[];
     itemHeight: number;
     initialScrollIndex: number;
     separatorColor?: string;
-    flatListProps?: FlatListProps;
+    flatListProps?: Partial<FlatListProps<ItemType>>;
 };
 
 const List = memo(
