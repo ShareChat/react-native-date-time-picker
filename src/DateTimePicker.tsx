@@ -78,7 +78,7 @@ const DateTimePicker = ({
         maximumDate,
         minimumDate,
     });
-    const clubbedDateItem = useRef<number | Date>(initialValue);
+    const clubbedDateItem = useRef<Date>(initialValue);
     // Start List
     const startListData = getData(mode, 0, { numberOfDays, is24Hour });
     const selectedStartItem = useRef<number>(
@@ -129,7 +129,9 @@ const DateTimePicker = ({
     const calculateNewDate = useCallback(() => {
         let year, month, day, hour, minute;
         let newDate = new Date(initialValue.getTime());
-        if (mode === 'date') {
+
+        if (mode === 'datetime') newDate = new Date(clubbedDateItem.current.getTime());
+        else if (mode === 'date') {
             year = selectedEndItem.current;
             month = selectedMiddleItem.current;
             day = selectedStartItem.current;
