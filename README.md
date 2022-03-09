@@ -90,6 +90,7 @@ Mode = 'date' | 'time' | 'datetime'
 | minimumDate    | Date              | -        | undefined  | Minimum Date available to select(only for "datetime" mode) |
 | maximumDate    | Date              | -        | undefined  | Maximum Date available to select(only for "datetime" mode) |
 | is24Hour       | boolean           | -        | false      | Display TimePicker in 24 hour.                             |
+| minuteInterval | number            | -        | 1          | Interval gap in minute list                                |
 | onChange       | function          | ✅       | -          | Callback to be called every time user change date.         |
 | itemHeight     | number            | -        | 40         | Height of single item in list                              |
 | containerStyle | ViewStyle         | -        | undefined  | Outermost View style                                       |

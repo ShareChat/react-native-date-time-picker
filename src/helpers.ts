@@ -9,6 +9,7 @@ type Config = {
     endYear?: number;
     maximumDate?: Date;
     minimumDate?: Date;
+    minuteInterval?: number;
 };
 
 export function numberOfDaysIn(month: number, year: number): PossibleDaysInMonth {
@@ -33,7 +34,7 @@ export function getData(mode: Mode, index: -1 | 0 | 1 | 2, config: Config = {}):
     if (mode === 'date') {
         return _getDateData(index, config);
     }
-    return _getTimeData(index, config.is24Hour ?? false);
+    return _getTimeData(index, config);
 }
 
 function _getDatetimeData({
@@ -77,11 +78,27 @@ function _getDateData(
     }
 }
 
-function _getTimeData(index: 0 | 1 | 2, is24Hour: boolean): Array<ItemType> {
+function _getTimeData(
+    index: 0 | 1 | 2,
+    { is24Hour = false, minuteInterval = 1 }: Config
+): Array<ItemType> {
     if (index === 0) {
         return is24Hour ? hour24Data : hour12Data;
     } else if (index === 1) {
-        return minuteData;
+        let length = 60;
+        let _minuteInterval = 1;
+        if (typeof minuteInterval === 'number' && minuteInterval >= 1 && minuteInterval <= 60) {
+            _minuteInterval = Math.floor(minuteInterval);
+            length = 60 / _minuteInterval;
+        }
+
+        return _addEmptySlots(
+            Array.from({ length }, (_, i) => ({
+                value: i * _minuteInterval,
+                text: ('0' + i * _minuteInterval).slice(-2),
+                id: `#${i + 1}`,
+            }))
+        );
     } else {
         return amPmData;
     }
@@ -116,8 +133,6 @@ function _generateArray(limit: number, valueModifier = 0) {
 
 const getHourArray = (is24Hour: boolean, valueModifier: number = 0) =>
     _generateArray(is24Hour ? 24 : 12, valueModifier);
-
-const getMinuteArray = () => _generateArray(60, -1);
 
 function getAmPmArray() {
     return ['AM', 'PM'].map((item, index) => ({
@@ -160,7 +175,6 @@ const getDateArray = () => _generateArray(31);
 
 const hour12Data = _addEmptySlots(getHourArray(false));
 const hour24Data = _addEmptySlots(getHourArray(true, -1));
-const minuteData = _addEmptySlots(getMinuteArray());
 const amPmData = _addEmptySlots(getAmPmArray());
 
 const monthData = _addEmptySlots(getMonthArray());

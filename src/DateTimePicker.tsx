@@ -49,6 +49,13 @@ type Props = {
      * Minimum Date
      */
     minimumDate?: Date;
+    /**
+     * Interval for minute list
+     *
+     * for example if minute interval is 5, you will see
+     * 0, 5, 10, 15, 20 and so on
+     */
+    minuteInterval?: number;
 };
 
 const DateTimePicker = ({
@@ -63,6 +70,7 @@ const DateTimePicker = ({
     flatListProps,
     maximumDate,
     minimumDate,
+    minuteInterval = 1,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
@@ -93,7 +101,7 @@ const DateTimePicker = ({
             : initialValue.getHours() - 12
     );
     // Middle List
-    const middleListData = getData(mode, 1);
+    const middleListData = getData(mode, 1, { minuteInterval });
     const selectedMiddleItem = useRef<number>(
         mode === 'date' ? initialValue.getMonth() : initialValue.getMinutes()
     );
