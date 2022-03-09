@@ -131,12 +131,14 @@ const DateTimePicker = ({
         let newDate = new Date(initialValue.getTime());
 
         if (mode === 'datetime') newDate = new Date(clubbedDateItem.current.getTime());
-        else if (mode === 'date') {
+
+        if (mode === 'date') {
             year = selectedEndItem.current;
             month = selectedMiddleItem.current;
             day = selectedStartItem.current;
             newDate.setFullYear(year, month, day);
         } else {
+            // this else case caters time part for both time and datetime modes.
             hour =
                 is24Hour || selectedEndItem.current === 1
                     ? selectedStartItem.current
