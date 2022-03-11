@@ -191,9 +191,9 @@ export function debounce(func: any, wait: number = 500, immediate?: boolean) {
     let timeout: any;
 
     // Calling debounce returns a new anonymous function
-    return function (...args: any) {
+    return (...args: any) => {
         // reference the context and args for the setTimeout function
-        const context = this;
+        // const context: any = this;
         // args = arguments;
 
         // Should the function be called now? If immediate is true
@@ -217,11 +217,11 @@ export function debounce(func: any, wait: number = 500, immediate?: boolean) {
                 // Call the original function with apply
                 // apply lets you define the 'this' object as well as the arguments
                 //    (both captured before setTimeout)
-                func.apply(context, args);
+                func(args);
             }
         }, wait);
 
         // Immediate mode and no wait timer? Execute the function..
-        if (callNow) func.apply(context, args);
+        if (callNow) func(args);
     };
 }
