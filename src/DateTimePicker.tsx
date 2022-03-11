@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
 
 import DateList from './DateList';
-import { getData, numberOfDaysIn } from './helpers';
+import { debounce, getData, numberOfDaysIn } from './helpers';
 import type { ItemType, ListItemStyleType, Mode, PossibleDaysInMonth } from './types';
 
 type Props = {
@@ -176,6 +176,8 @@ const DateTimePicker = ({
         onChange(calculateNewDate());
     }, [mode, onChange, calculateNewDate, numberOfDays]);
 
+    const debouncedHandleChange = debounce(handleChange, 500);
+
     return (
         <View style={containerStyle}>
             <View style={styles.row}>
@@ -183,7 +185,7 @@ const DateTimePicker = ({
                     <DateList
                         data={clubbedDateListData}
                         itemHeight={itemHeight}
-                        onChange={handleChange}
+                        onChange={debouncedHandleChange}
                         selectedValue={clubbedDateItem}
                         listItemStyle={[listItemStyle, styles.clubbedDateListItemStyle]}
                         initialScrollIndex={getInitialScrollIndex(
@@ -199,7 +201,7 @@ const DateTimePicker = ({
                 <DateList
                     data={startListData}
                     itemHeight={itemHeight}
-                    onChange={handleChange}
+                    onChange={debouncedHandleChange}
                     listItemStyle={listItemStyle}
                     selectedValue={selectedStartItem}
                     initialScrollIndex={getInitialScrollIndex(
@@ -213,7 +215,7 @@ const DateTimePicker = ({
                     data={middleListData}
                     itemHeight={itemHeight}
                     selectedValue={selectedMiddleItem}
-                    onChange={handleChange}
+                    onChange={debouncedHandleChange}
                     listItemStyle={listItemStyle}
                     style={styles.middleListStyle}
                     initialScrollIndex={getInitialScrollIndex(
@@ -229,7 +231,7 @@ const DateTimePicker = ({
                         itemHeight={itemHeight}
                         listItemStyle={listItemStyle}
                         selectedValue={selectedEndItem}
-                        onChange={handleChange}
+                        onChange={debouncedHandleChange}
                         initialScrollIndex={getInitialScrollIndex(
                             selectedEndItem.current,
                             endListData
