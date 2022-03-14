@@ -176,7 +176,7 @@ const DateTimePicker = ({
         onChange(calculateNewDate());
     }, [mode, onChange, calculateNewDate, numberOfDays]);
 
-    const debouncedHandleChange = debounce(handleChange, 500);
+    const debouncedHandleChange = debounce(handleChange, 100);
 
     return (
         <View style={containerStyle}>
