@@ -1,15 +1,25 @@
 {
-    "name": "react-native-date-time-picker",
+    "name": "@mohalla-tech/react-native-date-time-picker",
     "version": "1.0.0",
     "description": "Date/Time picker component written entirely on React Native side",
     "homepage": "https://github.com/ShareChat/react-native-date-time-picker#readme",
     "main": "lib/src/index.js",
-    "types": "lib/src/index.d.ts",
-    "author": "",
+    "types": "./lib/src/index.d.ts",
+    "author": "Sanjeev Yadav",
     "license": "MIT",
-    "files": [
-        "lib"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ShareChat/react-native-date-time-picker.git"
+    },
+    "keywords": [
+        "react-native",
+        "react-native-date-time-picker",
+        "react-native-date-picker",
+        "rn-date-time-picker"
     ],
+    "bugs": {
+        "url": "https://github.com/ShareChat/react-native-date-time-picker/issues"
+    },
     "scripts": {
         "compile": "rm -rf lib && tsc -p .",
         "prepare": "yarn compile",
