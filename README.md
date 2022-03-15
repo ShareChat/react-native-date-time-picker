@@ -22,13 +22,13 @@ React Native date & time picker component for iOS, Android written without using
 ## 📲 Getting started
 
 ```bash
-npm install @sharechat/react-native-date-time-picker --save
+npm install @mohalla-tech/react-native-date-time-picker --save
 ```
 
 or
 
 ```bash
-yarn add @sharechat/react-native-date-time-picker
+yarn add @mohalla-tech/react-native-date-time-picker
 ```
 
 > No linking or pod install are required.
