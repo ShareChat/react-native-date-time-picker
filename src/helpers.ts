@@ -41,7 +41,7 @@ function _getDatetimeData({
     minimumDate = dayjs().subtract(10, 'day').toDate(),
     maximumDate = dayjs().add(10, 'day').toDate(),
 }) {
-    const diff = dayjs(maximumDate).diff(minimumDate, 'days') + 2;
+    const diff = dayjs(maximumDate).diff(minimumDate, 'days') + 1;
     // only MM-DD-YYYY is allowed for parsing date in dayjs
     // https://day.js.org/docs/en/plugin/custom-parse-format
     let startDate = new Date(

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-native": "^0.67.1"
+    "react-native": "^0.67.1",
+    "@mohalla-tech/react-native-date-time-picker": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
