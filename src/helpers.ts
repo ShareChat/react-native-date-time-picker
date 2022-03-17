@@ -40,19 +40,24 @@ export function getData(mode: Mode, index: -1 | 0 | 1 | 2, config: Config = {}):
 function _getDatetimeData({
     minimumDate = dayjs().subtract(10, 'day').toDate(),
     maximumDate = dayjs().add(10, 'day').toDate(),
-}: Config): Array<ItemType> {
-    const diff = dayjs(maximumDate).diff(minimumDate, 'days');
-
+}) {
+    const diff = dayjs(maximumDate).diff(minimumDate, 'days') + 1;
     // only MM-DD-YYYY is allowed for parsing date in dayjs
     // https://day.js.org/docs/en/plugin/custom-parse-format
-    let startDate = dayjs(dayjs(minimumDate).format('MM-DD-YYYY'), 'MM-DD-YYYY');
-
-    const arr = Array.from({ length: diff }, (_, i) => ({
-        value: startDate.add(i, 'day').toDate(),
-        text: startDate.add(i, 'day').format('ddd, D MMM'),
-        id: `#${i + 1}`,
-    }));
-
+    let startDate = new Date(
+        minimumDate.getFullYear(),
+        minimumDate.getMonth(),
+        minimumDate.getDate()
+    );
+    const noOfMilliSecondsInADay = 24 * 60 * 60 * 1000;
+    const arr = Array.from({ length: diff }, (_, i) => {
+        const currentDate = new Date(startDate.getTime() + i * noOfMilliSecondsInADay);
+        return {
+            value: currentDate,
+            text: dayjs(currentDate).format('ddd, D MMM'),
+            id: `#${i + 1}`,
+        };
+    });
     return _addEmptySlots(arr);
 }
 

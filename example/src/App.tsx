@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, ScrollView, SafeAreaView } from 'react-native';
-import DateTimePicker from 'react-native-date-time-picker';
+import DateTimePicker from '@mohalla-tech/react-native-date-time-picker';
 
 const App = () => {
     const initialDate = new Date(1950, 6, 15, 7, 30);
@@ -13,7 +13,12 @@ const App = () => {
             <ScrollView contentContainerStyle={styles.container} contentInset={{ top: 32 }}>
                 <Text style={styles.text}>mode="datetime"</Text>
                 <View style={styles.card}>
-                    <DateTimePicker mode="datetime" onChange={setDatetime} />
+                    <DateTimePicker
+                        mode="datetime"
+                        onChange={setDatetime}
+                        minimumDate={new Date(2022, 3, 2)}
+                        maximumDate={new Date(2022, 4, 7)}
+                    />
                 </View>
                 <View style={styles.divider} />
 
