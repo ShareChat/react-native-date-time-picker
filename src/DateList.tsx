@@ -147,7 +147,7 @@ const List = memo(
                                 const index = Math.round(
                                     e.nativeEvent.contentOffset.y / itemHeight
                                 );
-                                const value = data[index + 1]?.value;
+                                const value = data[index + 1]?.value || -1;
                                 if (value !== -1) {
                                     selectedValue.current = value;
                                     onChange();
