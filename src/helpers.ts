@@ -230,3 +230,11 @@ export function debounce(func: any, wait: number = 500, immediate?: boolean) {
         if (callNow) func(args);
     };
 }
+
+export function validateDate(date: string, format: string) {
+    return dayjs(date, format).format(format) === date;
+}
+export const matchRegex = (value: string, regex: RegExp) => regex.test(value);
+export function validateTime(time: string, regex = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/) {
+    return matchRegex(time, regex);
+}
