@@ -1,6 +1,6 @@
 {
     "name": "@mohalla-tech/react-native-date-time-picker",
-    "version": "2.0.1-alpha.0",
+    "version": "2.0.1-next.0",
     "description": "Date/Time picker component written entirely on React Native side",
     "homepage": "https://github.com/ShareChat/react-native-date-time-picker#readme",
     "main": "lib/src/index.js",
