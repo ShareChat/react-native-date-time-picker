@@ -5,7 +5,7 @@ import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
 
 import DateList from './DateList';
 import { debounce, getData, numberOfDaysIn } from './helpers';
-import { ManualInput } from './ManualInput';
+import ManualInput from './ManualInput';
 import type { ItemType, ListItemStyleType, Mode, PossibleDaysInMonth } from './types';
 
 type Props = {
@@ -59,6 +59,7 @@ type Props = {
     minuteInterval?: number;
     enableTyping?: boolean;
     DateIcon?: React.ReactNode;
+    setError: (err: string) => void;
 };
 
 const DateTimePicker = ({
@@ -75,6 +76,7 @@ const DateTimePicker = ({
     minimumDate,
     minuteInterval = 1,
     enableTyping = false,
+    setError,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
@@ -182,7 +184,7 @@ const DateTimePicker = ({
 
     const debouncedHandleChange = debounce(handleChange, 100);
     if (enableTyping) {
-        return <ManualInput onChange={onChange} mode={mode} />;
+        return <ManualInput setError={setError} onChange={onChange} mode={mode} />;
     }
     return (
         <View style={containerStyle}>

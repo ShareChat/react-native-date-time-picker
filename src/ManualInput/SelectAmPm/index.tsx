@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { SelectAmOrPm } from '../DateTimeInput';
+import { SelectAmOrPm } from '../index';
 import Tab from './Tab';
 type Props = {
     selected: SelectAmOrPm;
@@ -31,6 +31,7 @@ export default SelectAmPm;
 const styles = StyleSheet.create({
     container: {
         marginLeft: 8,
+        marginBottom: 16,
     },
     tab: {
         display: 'flex',

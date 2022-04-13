@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { SelectAmOrPm } from '../DateTimeInput';
+import { SelectAmOrPm } from '../index';
 
 type Props = {
     text: string;

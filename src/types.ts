@@ -11,3 +11,9 @@ export enum ManualInputDefault {
     LongDate = 'DD/MM/YYYY',
     Time = 'HH:MM',
 }
+
+export enum InputDefaultLength {
+    ShortDate = 4,
+    LongDate = 8,
+    Time = 4,
+}

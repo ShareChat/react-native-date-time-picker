@@ -8,7 +8,7 @@ type Props = {
     onInputChange: (text: string) => void;
     maxLength?: number;
 };
-function Input({ defaultValue, onInputChange, maxLength }: Props) {
+const Input = ({ defaultValue, onInputChange, maxLength }: Props) => {
     const [value, setValue] = useState('');
     const textInputRef = useRef<TextInput>(null);
     const minWidth = defaultValue === ManualInputDefault.LongDate ? 130 : 94;
@@ -55,7 +55,7 @@ function Input({ defaultValue, onInputChange, maxLength }: Props) {
             />
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
