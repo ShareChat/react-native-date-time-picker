@@ -33,6 +33,7 @@ export const InputWithIcon = ({
                 />
 
                 <Input
+                 // @ts-ignore:next-line
                     ref={dateRef}
                     maxLength={maxLength}
                     onInputChange={onInputChange}

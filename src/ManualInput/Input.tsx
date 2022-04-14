@@ -11,6 +11,7 @@ type Props = {
 const Input = forwardRef<TextInput, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
     const [value, setValue] = useState('');
     const textInputRef = useRef<TextInput>(null);
+     // @ts-ignore:next-line
     useImperativeHandle(ref, () => ({
         focus: () => {
             textInputRef?.current?.focus();
