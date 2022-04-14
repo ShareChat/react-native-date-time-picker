@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import React, { useCallback } from 'react';
 import { useRef, useState } from 'react';
-import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
+import { FlatListProps, StyleSheet, View, ViewStyle, TextInput } from 'react-native';
 
 import DateList from './DateList';
 import { debounce, getData, numberOfDaysIn } from './helpers';
@@ -60,6 +60,7 @@ type Props = {
     enableTyping?: boolean;
     DateIcon?: React.ReactNode;
     setError: (err: string) => void;
+    dateRef?: TextInput;
 };
 
 const DateTimePicker = ({
@@ -76,6 +77,7 @@ const DateTimePicker = ({
     minimumDate,
     minuteInterval = 1,
     enableTyping = false,
+    dateRef,
     setError,
 }: Props) => {
     /**
@@ -184,7 +186,9 @@ const DateTimePicker = ({
 
     const debouncedHandleChange = debounce(handleChange, 100);
     if (enableTyping) {
-        return <ManualInput setError={setError} onChange={onChange} mode={mode} />;
+        return (
+            <ManualInput setError={setError} dateRef={dateRef} onChange={onChange} mode={mode} />
+        );
     }
     return (
         <View style={containerStyle}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { Image, StyleSheet, Text, View, ViewStyle, TextInput } from 'react-native';
 
 import { ManualInputDefault } from '../types';
 import Input from './Input';
@@ -11,6 +11,7 @@ type Props = {
     onInputChange: (text: string) => void;
     errorText?: string;
     maxLength?: number;
+    dateRef?: TextInput;
 };
 export const InputWithIcon = ({
     iconUrl,
@@ -19,6 +20,7 @@ export const InputWithIcon = ({
     onInputChange,
     errorText,
     maxLength,
+    dateRef,
 }: Props) => {
     return (
         <View style={containerStyle}>
@@ -31,6 +33,7 @@ export const InputWithIcon = ({
                 />
 
                 <Input
+                    ref={dateRef}
                     maxLength={maxLength}
                     onInputChange={onInputChange}
                     defaultValue={defaultValue}

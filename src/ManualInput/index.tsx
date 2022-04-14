@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { StyleSheet, View, TextInput } from 'react-native';
 
 import { ImageUrl } from '../config/ImageUrls';
 import { validateDate, validateTime } from '../helpers';
@@ -12,44 +12,42 @@ type Props = {
     onChange: (text: Date) => void;
     setError: (err: string) => void;
     mode: Mode;
+    dateRef?: TextInput;
 };
 export enum SelectAmOrPm {
     am = 'AM',
     pm = 'PM',
 }
-const ManualInput = ({ onChange, setError, mode }: Props) => {
-    console.log(mode);
+const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [timeError, setTimeError] = useState('');
     const [dateError, setDateError] = useState('');
 
     const [selected, setSelected] = useState<SelectAmOrPm>(SelectAmOrPm.am);
+
     const onInputDateChange = (text: string) => {
         setDateError('');
-        setError('');
         const dateMaxLength =
             mode === 'date' ? InputDefaultLength.LongDate : InputDefaultLength.ShortDate;
         if (text.length === dateMaxLength) {
             const day = text.substring(0, 2);
             const month = text.substring(2, 4);
             const year = mode === 'date' ? text.substring(4, 8) : new Date().getFullYear();
-            console.log(year);
             const currentDate = `${year}/${month}/${day}`;
             if (validateDate(currentDate, 'YYYY/MM/DD')) {
                 setDate(currentDate);
             } else {
                 setDateError('Invalid date');
-                setError('Invalid date');
             }
         } else {
             setDate('');
+            setError('Invalid date');
         }
     };
 
     const onInputTimeChange = (text: string) => {
         setTimeError('');
-        setError('');
         if (text.length === InputDefaultLength.Time) {
             const hour = text.substring(0, 2);
             const min = text.substring(2, 4);
@@ -58,20 +56,22 @@ const ManualInput = ({ onChange, setError, mode }: Props) => {
                 setTime(currentTime);
             } else {
                 setTimeError('Invalid time');
-                setError('Invalid time');
             }
         } else {
             setTime('');
+            setError('Invalid time');
         }
     };
     const onChangeDate = () => {
         if (date) {
+            setError('');
             const formattedDate = dayjs(date, 'YYYY/MM/DD').toDate();
             onChange(formattedDate);
         }
     };
     const onChangeDateTime = () => {
         if (date && time) {
+            setError('');
             const formattedDate = dayjs(
                 `${date}, ${time} ${selected}`,
                 'YYYY/MM/DD, hh:mm a'
@@ -79,6 +79,9 @@ const ManualInput = ({ onChange, setError, mode }: Props) => {
             onChange(formattedDate);
         }
     };
+    useEffect(() => {
+        setError('Invalid date and time');
+    }, []);
     useEffect(() => {
         if (mode === 'datetime') {
             onChangeDateTime();
@@ -99,6 +102,7 @@ const ManualInput = ({ onChange, setError, mode }: Props) => {
                 maxLength={
                     mode === 'date' ? InputDefaultLength.LongDate : InputDefaultLength.ShortDate
                 }
+                dateRef={dateRef}
             />
             {mode === 'datetime' ? (
                 <>

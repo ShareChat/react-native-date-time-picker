@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import React, { useState, useRef, forwardRef, useEffect, useImperativeHandle } from 'react';
+import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { ManualInputDefault } from '../types';
 const obfusChars = ['/', ':'];
@@ -8,9 +8,14 @@ type Props = {
     onInputChange: (text: string) => void;
     maxLength?: number;
 };
-const Input = ({ defaultValue, onInputChange, maxLength }: Props) => {
+const Input = forwardRef<TextInput, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
     const [value, setValue] = useState('');
     const textInputRef = useRef<TextInput>(null);
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            textInputRef?.current?.focus();
+        },
+    }));
     const minWidth = defaultValue === ManualInputDefault.LongDate ? 130 : 94;
 
     const handleChange = (text: string) => {
@@ -34,15 +39,13 @@ const Input = ({ defaultValue, onInputChange, maxLength }: Props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.maskedTextContainer}>
-                <Text
-                    onPress={() => {
-                        textInputRef.current?.focus();
-                    }}
-                    style={styles.maskedText}>
-                    {renderMaskedText(value)}
-                </Text>
-            </View>
+            <TouchableOpacity
+                onPress={() => {
+                    textInputRef.current?.focus();
+                }}
+                style={styles.maskedTextContainer}>
+                <Text style={styles.maskedText}>{renderMaskedText(value)}</Text>
+            </TouchableOpacity>
 
             <TextInput
                 ref={textInputRef}
@@ -55,7 +58,7 @@ const Input = ({ defaultValue, onInputChange, maxLength }: Props) => {
             />
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     container: {
