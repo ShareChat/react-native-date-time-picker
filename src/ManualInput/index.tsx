@@ -1,9 +1,8 @@
-import dayjs from 'dayjs';
-import React, { useEffect, useState, useRef } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import React, { Ref, useEffect, useState } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
 
 import { ImageUrl } from '../config/ImageUrls';
-import { validateDate, validateTime, convertTimeTo24hr } from '../helpers';
+import { convertTimeTo24hr, validateDate, validateTime } from '../helpers';
 import { InputDefaultLength, ManualInputDefault, Mode } from '../types';
 import { InputWithIcon } from './InputWithIcon';
 import SelectAmPm from './SelectAmPm';
@@ -12,7 +11,7 @@ type Props = {
     onChange: (text: Date) => void;
     setError: (err: string) => void;
     mode: Mode;
-    dateRef?: TextInput;
+    dateRef?: Ref<TextInput>;
 };
 export enum SelectAmOrPm {
     am = 'AM',
@@ -25,6 +24,18 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
     const [dateError, setDateError] = useState('');
 
     const [selected, setSelected] = useState<SelectAmOrPm>(SelectAmOrPm.am);
+
+    useEffect(() => {
+        setError('Invalid date and time');
+    }, [setError]);
+    useEffect(() => {
+        if (mode === 'datetime') {
+            onChangeDateTime();
+        } else {
+            onChangeDate();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date, time, selected]);
 
     const onInputDateChange = (text: string) => {
         setDateError('');
@@ -87,16 +98,6 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
             onChange(formattedDate);
         }
     };
-    useEffect(() => {
-        setError('Invalid date and time');
-    }, []);
-    useEffect(() => {
-        if (mode === 'datetime') {
-            onChangeDateTime();
-        } else {
-            onChangeDate();
-        }
-    }, [date, time, selected]);
 
     return (
         <View style={styles.container}>

@@ -1,5 +1,5 @@
-import React, { useState, useRef, forwardRef, useEffect, useImperativeHandle } from 'react';
-import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ManualInputDefault } from '../types';
 const obfusChars = ['/', ':'];
@@ -8,10 +8,13 @@ type Props = {
     onInputChange: (text: string) => void;
     maxLength?: number;
 };
-const Input = forwardRef<TextInput, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
+export type FocusHandle = {
+    focus: () => void;
+};
+const Input = forwardRef<FocusHandle, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
     const [value, setValue] = useState('');
     const textInputRef = useRef<TextInput>(null);
-     // @ts-ignore:next-line
+
     useImperativeHandle(ref, () => ({
         focus: () => {
             textInputRef?.current?.focus();

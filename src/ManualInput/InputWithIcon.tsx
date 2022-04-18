@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View, ViewStyle, TextInput } from 'react-native';
+import React, { Ref } from 'react';
+import { Image, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-native';
 
 import { ManualInputDefault } from '../types';
 import Input from './Input';
@@ -11,7 +11,7 @@ type Props = {
     onInputChange: (text: string) => void;
     errorText?: string;
     maxLength?: number;
-    dateRef?: TextInput;
+    dateRef?: Ref<TextInput>;
 };
 export const InputWithIcon = ({
     iconUrl,
@@ -33,7 +33,6 @@ export const InputWithIcon = ({
                 />
 
                 <Input
-                 // @ts-ignore:next-line
                     ref={dateRef}
                     maxLength={maxLength}
                     onInputChange={onInputChange}

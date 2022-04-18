@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useCallback } from 'react';
+import React, { Ref, useCallback } from 'react';
 import { useRef, useState } from 'react';
 import { FlatListProps, StyleSheet, View, ViewStyle, TextInput } from 'react-native';
 
@@ -58,9 +58,8 @@ type Props = {
      */
     minuteInterval?: number;
     enableTyping?: boolean;
-    DateIcon?: React.ReactNode;
     setError: (err: string) => void;
-    dateRef?: TextInput;
+    dateRef?: Ref<TextInput>;
 };
 
 const DateTimePicker = ({
