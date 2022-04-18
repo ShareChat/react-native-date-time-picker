@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 
 import { ImageUrl } from '../config/ImageUrls';
-import { validateDate, validateTime } from '../helpers';
+import { validateDate, validateTime, convertTimeTo24hr } from '../helpers';
 import { InputDefaultLength, ManualInputDefault, Mode } from '../types';
 import { InputWithIcon } from './InputWithIcon';
 import SelectAmPm from './SelectAmPm';
@@ -35,6 +35,7 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
             const month = text.substring(2, 4);
             const year = mode === 'date' ? text.substring(4, 8) : new Date().getFullYear();
             const currentDate = `${year}/${month}/${day}`;
+
             if (validateDate(currentDate, 'YYYY/MM/DD')) {
                 setDate(currentDate);
             } else {
@@ -52,6 +53,7 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
             const hour = text.substring(0, 2);
             const min = text.substring(2, 4);
             const currentTime = `${hour}:${min}`;
+
             if (validateTime(currentTime, /^(0?[1-9]|1[0-2]):[0-5][0-9]$/)) {
                 setTime(currentTime);
             } else {
@@ -65,17 +67,23 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
     const onChangeDate = () => {
         if (date) {
             setError('');
-            const formattedDate = dayjs(date, 'YYYY/MM/DD').toDate();
+            const [year, month, day] = date.split('/');
+            const formattedDate = new Date(Number(year), Number(month) - 1, Number(day));
             onChange(formattedDate);
         }
     };
     const onChangeDateTime = () => {
         if (date && time) {
             setError('');
-            const formattedDate = dayjs(
-                `${date}, ${time} ${selected}`,
-                'YYYY/MM/DD, hh:mm a'
-            ).toDate();
+            const [hours, minutes] = convertTimeTo24hr(`${time} ${selected}`).split(':');
+            const [year, month, day] = date.split('/');
+            const formattedDate = new Date(
+                Number(year),
+                Number(month) - 1,
+                Number(day),
+                Number(hours),
+                Number(minutes)
+            );
             onChange(formattedDate);
         }
     };

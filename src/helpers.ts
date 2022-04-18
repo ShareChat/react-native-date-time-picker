@@ -238,3 +238,15 @@ export const matchRegex = (value: string, regex: RegExp) => regex.test(value);
 export function validateTime(time: string, regex = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/) {
     return matchRegex(time, regex);
 }
+
+export const convertTimeTo24hr = (timeStr: string) => {
+    const [time, modifier] = timeStr.split(' ');
+    let [hours, minutes] = time.split(':');
+    if (hours === '12') {
+        hours = '00';
+    }
+    if (modifier === 'PM') {
+        hours = String(parseInt(hours, 10) + 12);
+    }
+    return `${hours}:${minutes}`;
+};
