@@ -28,7 +28,9 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
 
     useEffect(() => {
         setError('Invalid date and time');
-    }, [setError]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     useEffect(() => {
         if (mode === 'datetime') {
             onChangeDateTime();
