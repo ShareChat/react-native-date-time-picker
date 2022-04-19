@@ -6,6 +6,7 @@ import { convertTimeTo24hr, validateDate, validateTime } from '../helpers';
 import { InputDefaultLength, ManualInputDefault, Mode } from '../types';
 import { InputWithIcon } from './InputWithIcon';
 import SelectAmPm from './SelectAmPm';
+import { themeColors } from '../config/constants';
 
 type Props = {
     onChange: (text: Date) => void;
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         height: 114,
-        backgroundColor: '#000000',
+        backgroundColor: themeColors.black,
     },
     marginLeftAuto: {
         marginLeft: 'auto',

@@ -2,6 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ManualInputDefault } from '../types';
+import { themeColors } from '../config/constants';
 const obfusChars = ['/', ':'];
 type Props = {
     defaultValue: ManualInputDefault;
@@ -66,13 +67,13 @@ const Input = forwardRef<FocusHandle, Props>(({ defaultValue, onInputChange, max
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#000000',
+        backgroundColor: themeColors.black,
         position: 'relative',
         height: 48,
     },
     textInputStyle: {
         color: 'transparent',
-        backgroundColor: '#131319',
+        backgroundColor: themeColors.surface,
         paddingHorizontal: 12,
         borderRadius: 8,
         paddingVertical: 14.5,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     maskedText: {
-        color: '#8A8A8F',
+        color: themeColors.disabled,
         fontFamily: 'Nunito',
         fontSize: 15,
         fontWeight: '400',

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { SelectAmOrPm } from '../index';
+import { themeColors } from '../../config/constants';
 
 type Props = {
     text: string;
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 24,
-        backgroundColor: '#131319',
+        backgroundColor: themeColors.surface,
         width: 40,
     },
     topBorder: {
@@ -53,16 +54,16 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 8,
     },
     tabSelected: {
-        backgroundColor: '#D7D7D8',
+        backgroundColor: themeColors.primary,
     },
     text: {
-        color: '#8A8A8F',
+        color: themeColors.disabled,
         fontFamily: 'Nunito',
         fontSize: 13,
         fontWeight: '700',
         lineHeight: 15.6,
     },
     selectedText: {
-        color: '#000000',
+        color: themeColors.black,
     },
 });

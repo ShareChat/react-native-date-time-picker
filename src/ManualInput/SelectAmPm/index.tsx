@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { SelectAmOrPm } from '../index';
 import Tab from './Tab';
+import { themeColors } from '../../config/constants';
 type Props = {
     selected: SelectAmOrPm;
     setSelected: (flag: SelectAmOrPm) => void;
@@ -37,13 +38,13 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         height: 24,
-        backgroundColor: '#131319',
+        backgroundColor: themeColors.surface,
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
         width: 40,
     },
     text: {
-        color: '#8A8A8F',
+        color: themeColors.disabled,
         fontFamily: 'Nunito',
         fontSize: 13,
         fontWeight: '400',

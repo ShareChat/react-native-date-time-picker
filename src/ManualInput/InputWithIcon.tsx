@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-nativ
 
 import { ManualInputDefault } from '../types';
 import Input from './Input';
+import { themeColors } from '../config/constants';
 
 type Props = {
     iconUrl: string;
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
         height: 48,
     },
     errorStyle: {
-        color: 'red',
+        color: themeColors.error,
     },
 });

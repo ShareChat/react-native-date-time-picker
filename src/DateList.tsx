@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import type { ItemType, ListItemStyleType } from './types';
+import { themeColors } from './config/constants';
 
 const NUMBER_OF_ITEMS = 3;
 
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopWidth: 2,
         borderBottomWidth: 2,
-        borderColor: '#131319',
+        borderColor: themeColors.surface,
     },
 });
 
