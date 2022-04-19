@@ -1,9 +1,11 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ManualInputDefault } from '../types';
 import { themeColors } from '../config/constants';
+
 const obfusChars = ['/', ':'];
+
 type Props = {
     defaultValue: ManualInputDefault;
     onInputChange: (text: string) => void;
@@ -12,15 +14,9 @@ type Props = {
 export type FocusHandle = {
     focus: () => void;
 };
-const Input = forwardRef<FocusHandle, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
-    const [value, setValue] = useState('');
-    const textInputRef = useRef<TextInput>(null);
 
-    useImperativeHandle(ref, () => ({
-        focus: () => {
-            textInputRef?.current?.focus();
-        },
-    }));
+const Input = forwardRef<TextInput, Props>(({ defaultValue, onInputChange, maxLength }, ref) => {
+    const [value, setValue] = useState('');
     const minWidth = defaultValue === ManualInputDefault.LongDate ? 130 : 94;
 
     const handleChange = (text: string) => {
@@ -46,18 +42,20 @@ const Input = forwardRef<FocusHandle, Props>(({ defaultValue, onInputChange, max
         <View style={styles.container}>
             <TouchableOpacity
                 onPress={() => {
-                    textInputRef.current?.focus();
+                    if (ref != null && typeof ref !== 'function') {
+                        ref?.current?.focus();
+                    }
                 }}
                 style={styles.maskedTextContainer}>
                 <Text style={styles.maskedText}>{renderMaskedText(value)}</Text>
             </TouchableOpacity>
 
             <TextInput
-                ref={textInputRef}
+                ref={ref}
                 caretHidden={true}
                 value={value}
                 onChangeText={handleChange}
-                style={StyleSheet.flatten([styles.textInputStyle, { minWidth }])}
+                style={[styles.textInputStyle, { minWidth }]}
                 maxLength={maxLength}
                 keyboardType="number-pad"
             />

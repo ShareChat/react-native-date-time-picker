@@ -1,4 +1,4 @@
-import React, { Ref } from 'react';
+import React, { forwardRef } from 'react';
 import { Image, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-native';
 
 import { ManualInputDefault } from '../types';
@@ -12,38 +12,34 @@ type Props = {
     onInputChange: (text: string) => void;
     errorText?: string;
     maxLength?: number;
-    dateRef?: Ref<TextInput>;
 };
-export const InputWithIcon = ({
-    iconUrl,
-    containerStyle,
-    defaultValue,
-    onInputChange,
-    errorText,
-    maxLength,
-    dateRef,
-}: Props) => {
-    return (
-        <View style={containerStyle}>
-            <View style={styles.inputWithIconStyle}>
-                <Image
-                    source={{
-                        uri: iconUrl,
-                    }}
-                    style={styles.iconStyle}
-                />
+export const InputWithIcon = forwardRef<TextInput, Props>(
+    (
+        { iconUrl, containerStyle, defaultValue, onInputChange, errorText, maxLength }: Props,
+        ref
+    ) => {
+        return (
+            <View style={containerStyle}>
+                <View style={styles.inputWithIconStyle}>
+                    <Image
+                        source={{
+                            uri: iconUrl,
+                        }}
+                        style={styles.iconStyle}
+                    />
 
-                <Input
-                    ref={dateRef}
-                    maxLength={maxLength}
-                    onInputChange={onInputChange}
-                    defaultValue={defaultValue}
-                />
+                    <Input
+                        ref={ref}
+                        maxLength={maxLength}
+                        onInputChange={onInputChange}
+                        defaultValue={defaultValue}
+                    />
+                </View>
+                <Text style={styles.errorStyle}>{errorText}</Text>
             </View>
-            <Text style={styles.errorStyle}>{errorText}</Text>
-        </View>
-    );
-};
+        );
+    }
+);
 
 const styles = StyleSheet.create({
     iconStyle: {

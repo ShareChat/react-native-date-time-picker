@@ -1,4 +1,4 @@
-import React, { Ref, useEffect, useState } from 'react';
+import React, { Ref, useEffect, useState, useRef } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 import { ImageUrl } from '../config/ImageUrls';
@@ -25,6 +25,8 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
     const [dateError, setDateError] = useState('');
 
     const [selected, setSelected] = useState<SelectAmOrPm>(SelectAmOrPm.am);
+
+    const timeRef = useRef<TextInput>(null);
 
     useEffect(() => {
         setError('Invalid date and time');
@@ -114,7 +116,7 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
                 maxLength={
                     mode === 'date' ? InputDefaultLength.LongDate : InputDefaultLength.ShortDate
                 }
-                dateRef={dateRef}
+                ref={dateRef}
             />
             {mode === 'datetime' ? (
                 <>
@@ -125,6 +127,7 @@ const ManualInput = ({ onChange, setError, mode, dateRef }: Props) => {
                         containerStyle={styles.marginLeftAuto}
                         errorText={timeError}
                         maxLength={InputDefaultLength.Time}
+                        ref={timeRef}
                     />
                     <SelectAmPm selected={selected} setSelected={setSelected} />
                 </>
