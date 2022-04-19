@@ -57,7 +57,7 @@ const Input = forwardRef<FocusHandle, Props>(({ defaultValue, onInputChange, max
                 caretHidden={true}
                 value={value}
                 onChangeText={handleChange}
-                style={[styles.textInputStyle, { minWidth }]}
+                style={StyleSheet.flatten([styles.textInputStyle, { minWidth }])}
                 maxLength={maxLength}
                 keyboardType="number-pad"
             />
