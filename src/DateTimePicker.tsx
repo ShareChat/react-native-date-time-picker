@@ -1,10 +1,11 @@
 import dayjs from 'dayjs';
-import React, { useCallback } from 'react';
+import React, { Ref, useCallback } from 'react';
 import { useRef, useState } from 'react';
-import { FlatListProps, StyleSheet, View, ViewStyle } from 'react-native';
+import { FlatListProps, StyleSheet, View, ViewStyle, TextInput } from 'react-native';
 
 import DateList from './DateList';
 import { debounce, getData, numberOfDaysIn } from './helpers';
+import ManualInput from './ManualInput';
 import type { ItemType, ListItemStyleType, Mode, PossibleDaysInMonth } from './types';
 
 type Props = {
@@ -56,6 +57,9 @@ type Props = {
      * 0, 5, 10, 15, 20 and so on
      */
     minuteInterval?: number;
+    enableTyping?: boolean;
+    setError: (err: string) => void;
+    dateRef?: Ref<TextInput>;
 };
 
 const DateTimePicker = ({
@@ -71,6 +75,9 @@ const DateTimePicker = ({
     maximumDate,
     minimumDate,
     minuteInterval = 1,
+    enableTyping = false,
+    dateRef,
+    setError,
 }: Props) => {
     /**
      * If mode === 'date' depending upon year and month selected
@@ -177,7 +184,11 @@ const DateTimePicker = ({
     }, [mode, onChange, calculateNewDate, numberOfDays]);
 
     const debouncedHandleChange = debounce(handleChange, 100);
-
+    if (enableTyping) {
+        return (
+            <ManualInput setError={setError} dateRef={dateRef} onChange={onChange} mode={mode} />
+        );
+    }
     return (
         <View style={containerStyle}>
             <View style={styles.row}>
